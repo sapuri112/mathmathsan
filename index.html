@@ -304,6 +304,20 @@
     color:var(--c-accent-ink);padding:4px 12px;border-radius:999px;
     font-size:12px;font-weight:600;letter-spacing:.06em;margin:0 6px 6px 0;
   }
+
+  /* 共著 折り畳み */
+  .books .book-extra{display:none}
+  .books.expanded .book-extra{display:flex}
+  .books-toggle{display:flex;justify-content:center;margin:28px 0 0}
+  .books-toggle button{
+    padding:12px 28px;border-radius:999px;
+    background:#fff;color:var(--c-accent-ink);
+    border:1.5px solid var(--c-accent);
+    font-size:14px;font-weight:700;cursor:pointer;
+    font-family:inherit;
+    transition:background .15s,color .15s;
+  }
+  .books-toggle button:hover{background:var(--c-accent-soft)}
 </style>
 
 <!-- JSON-LD: Person schema for SEO / Knowledge Graph -->
@@ -461,7 +475,7 @@
         「できた」「わかった」を超えて、<strong>子ども自身が算数そのものを愉しめる時間</strong>をつくることを追究しています。
       </p>
       <div class="actions">
-        <a class="btn" href="mailto:price_nutria.0n@icloud.com">授業見学・執筆・講演のご依頼</a>
+        <a class="btn" href="mailto:price_nutria.0n@icloud.com">メールで依頼する</a>
         <a class="btn ghost" href="#books">著書を見る</a>
       </div>
     </div>
@@ -755,7 +769,7 @@
       <div class="kicker">Publications</div>
       <h2>著書</h2>
     </div>
-    <h3 style="margin:0 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">単著</h3>
+    <h3 style="margin:0 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">単著・監修</h3>
     <div class="books">
       <article class="book" style="border:2px solid var(--c-accent);position:relative">
         <span style="position:absolute;top:-12px;left:18px;background:var(--c-accent);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;padding:3px 10px;border-radius:999px">最新刊</span>
@@ -765,7 +779,7 @@
         </div>
         <div class="body">
           <h3>算数 おもしろ問題で愉しい！授業づくり</h3>
-          <p class="pub">前田健太 / 東洋館出版社 / 2026年2月24日</p>
+          <p class="pub">前田健太 / 東洋館出版社 / 2026年2月</p>
           <p><strong>先生のための1冊。</strong>「おもしろ問題」を授業で使うよさと効果的な使い方を整理し、実際の授業実践例と、明日から教室で使えるおもしろ問題集をあわせて掲載。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/4491063354" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
@@ -778,7 +792,7 @@
         </div>
         <div class="body">
           <h3>絶対解きたくなる！考えるのが楽しくてとまらない算数</h3>
-          <p class="pub">前田健太 / KADOKAWA / 2026年1月19日</p>
+          <p class="pub">前田健太 / KADOKAWA / 2026年1月</p>
           <p><strong>子どもから大人まで楽しめる1冊。</strong>「1兆秒生きられるか？」「ポイント還元と現金値引、どちらが得？」など、思わず取り組みたくなる算数問題を多数収録。家族で読んでも、ひとりで没頭しても、考えるのが愉しくてとまらない。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/4046078944" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
@@ -789,22 +803,33 @@
         </div>
         <div class="body">
           <h3>しかける！算数授業</h3>
-          <p class="pub">前田健太 / 明治図書出版 / 2023年2月10日</p>
+          <p class="pub">前田健太 / 明治図書出版 / 2023年2月</p>
           <p><strong>初の単著。</strong>子どもの思考が動き出す「しかけ」を、教材・発問・板書・反応・話し合い・自学までジャンル別に44個収録。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/4183424380" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
       </article>
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4811331877.09.LZZZZZZZ.jpg" alt="数字のトリックを見ぬけ はじめてのデータリテラシー 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>数字のトリックを見ぬけ はじめてのデータリテラシー（全3巻）</h3>
+          <p class="pub">前田健太 監修 / 汐文社 / 2025年2月</p>
+          <p>小学生から学べるデータリテラシーの入門書。身近な題材で「数字の見せ方」のトリックを読み解く全3巻シリーズ。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4811331877" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
     </div>
 
-    <h3 style="margin:48px 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">共著・監修</h3>
-    <div class="books">
+    <h3 style="margin:48px 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">共著</h3>
+    <div class="books books-co">
       <article class="book">
         <div class="cover">
           <img src="https://images-na.ssl-images-amazon.com/images/P/4184964265.09.LZZZZZZZ.jpg" alt="図解 小学4年の学級経営 世界一わかりやすいクラスづくりの本 書影" loading="lazy">
         </div>
         <div class="body">
           <h3>図解 小学4年〜6年の学級経営 世界一わかりやすいクラスづくりの本</h3>
-          <p class="pub">『授業力&amp;学級経営力』編集部 編 / 明治図書出版 / 2026年4月27日</p>
+          <p class="pub">『授業力&amp;学級経営力』編集部 編 / 明治図書出版 / 2026年4月</p>
           <p>各学年の学級経営を、新年度準備・授業開き・係活動・行事・年度末まで「図解」で整理した実践書シリーズ。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/4184964265" target="_blank" rel="noopener">Amazonで見る（4年）</a>
         </div>
@@ -815,7 +840,7 @@
         </div>
         <div class="body">
           <h3>はじめての算数 ―授業の基礎・基本</h3>
-          <p class="pub">森本隆史 編 / 東洋館出版社 / 2025年3月18日</p>
+          <p class="pub">森本隆史 編 / 東洋館出版社 / 2025年3月</p>
           <p>算数授業を初めて担当する先生に向けた基礎・基本の1冊。「算数の家庭学習」（pp.104–118）を分担執筆。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/449105777X" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
@@ -826,23 +851,124 @@
         </div>
         <div class="body">
           <h3>小学1年の学級づくり&amp;授業づくり 12か月の仕事術</h3>
-          <p class="pub">安藤浩太 ほか共著 / 明治図書出版 / 2025年2月28日</p>
-          <p>1年生担任のための、4月から3月までの学級経営・授業づくりを月別に解説した1冊。</p>
+          <p class="pub">チーム・ロケットスタート（共著）/ 明治図書出版 / 2025年3月 / ロケットスタートシリーズ</p>
+          <p>1年生担任のための、4月〜3月の学級経営・授業づくりを月別に解説した共著書。担当：p50–51 授業開き「算数」もし数字がなかったら…？／p98–99 学級づくりのポイント「学級通信」／p182–185 授業づくりのポイント「算数」学習の要所と指導スキル。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/4185001347" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
       </article>
       <article class="book">
         <div class="cover">
-          <img src="https://images-na.ssl-images-amazon.com/images/P/4811331877.09.LZZZZZZZ.jpg" alt="数字のトリックを見ぬけ はじめてのデータリテラシー 書影" loading="lazy">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4184633277.09.LZZZZZZZ.jpg" alt="「子ども主体」の授業づくり大全 書影" loading="lazy">
         </div>
         <div class="body">
-          <h3>数字のトリックを見ぬけ はじめてのデータリテラシー（全3巻）</h3>
-          <p class="pub">前田健太 監修 / 汐文社 / 2025年2月10日</p>
-          <p>小学生から学べるデータリテラシーの入門書。身近な題材で「数字の見せ方」のトリックを読み解く全3巻シリーズ。</p>
-          <a class="buy" href="https://www.amazon.co.jp/dp/4811331877" target="_blank" rel="noopener">Amazonで見る</a>
+          <h3>「子ども主体」の授業づくり大全</h3>
+          <p class="pub">『授業力&amp;学級経営力』編集部 編 / 明治図書出版 / 2024年10月</p>
+          <p>担当：p78–79 比較分析「教師が教え込む授業 ✕ 子供が学び取る授業『振り返り・まとめ』」。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4184633277" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/418370121X.09.LZZZZZZZ.jpg" alt="1年間まるっとおまかせ！小1担任のための学級経営大事典 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>1年間まるっとおまかせ！小1担任のための学級経営大事典</h3>
+          <p class="pub">『授業力&amp;学級経営力』編集部 編 / 明治図書出版 / 2024年2月</p>
+          <p>担当：p92–93「先生の持っているカードを当てよう！」／p154–155「すべての答えがつくれるのかな？」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/418370121X" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4183702259.09.LZZZZZZZ.jpg" alt="1年間まるっとおまかせ！小2担任のための学級経営大事典 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>1年間まるっとおまかせ！小2担任のための学級経営大事典</h3>
+          <p class="pub">『授業力&amp;学級経営力』編集部 編 / 明治図書出版 / 2024年2月</p>
+          <p>担当：p88–89「一番小さい答えを作ろう！」／p150–151「九九で占いをしよう！」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4183702259" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4491043868.09.LZZZZZZZ.jpg" alt="基礎+発展で深い学びが得られる！算数おもしろ問題100 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>基礎+発展で深い学びが得られる！算数おもしろ問題100</h3>
+          <p class="pub">細水保宏・ガウスの会 著 / 東洋館出版社 / 2023年3月</p>
+          <p>担当：p34–35 問題15「算数占いをしよう」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4491043868" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4491051232.09.LZZZZZZZ.jpg" alt="イラストで見る 全活動・全行事の学級経営のすべて 小学校1年 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>イラストで見る 全活動・全行事の学級経営のすべて 小学校1年</h3>
+          <p class="pub">熱海康太 編 / 東洋館出版社 / 2023年3月</p>
+          <p>担当範囲：p52–53／62–63／78–79／90–93／98–99／100–101／116–117／120–121／134–135／140–141／144–145／156–157／176–177／180–181</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4491051232" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4183601142.09.LZZZZZZZ.jpg" alt="1年間まるっとおまかせ！小学1・2年担任のための学級あそび大事典 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>1年間まるっとおまかせ！小学1・2年担任のための学級あそび大事典</h3>
+          <p class="pub">『授業力&amp;学級経営力』編集部 編 / 明治図書出版 / 2022年2月</p>
+          <p>担当：p190–191「恐怖の21」／p192–193「時計じゃんけん」／p194–195「たし算ビンゴ」／p196–197「正方形さがし」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4183601142" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4183195225.09.LZZZZZZZ.jpg" alt="学びに向かう力を育てる！算数教科書アレンジ 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>学びに向かう力を育てる！算数教科書アレンジ</h3>
+          <p class="pub">盛山隆雄・加固希支男・松瀬仁・山本大貴・志の算数研究会 著 / 明治図書出版 / 2021年2月</p>
+          <p>担当：p26–29「1年：隠れた数はいくつといくつ？（大きな数）」／p114–117「5年：どちらが多くカードをとれる？（偶数と奇数、倍数と約数）」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4183195225" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4182679210.09.LZZZZZZZ.jpg" alt="めあて&振り返りで見る 算数授業のつくり方 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>めあて&amp;振り返りで見る 算数授業のつくり方</h3>
+          <p class="pub">盛山隆雄・加固希支男・松瀬仁・山本大貴・志の算数研究会 著 / 明治図書出版 / 2019年2月</p>
+          <p>担当：p38–43「2年：答えが一番小さくなる筆算をつくろう！」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4182679210" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4181562123.09.LZZZZZZZ.jpg" alt="子どもがぐんぐんやる気になる！小学校算数 授業づくりの技事典 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>子どもがぐんぐんやる気になる！小学校算数 授業づくりの技事典</h3>
+          <p class="pub">盛山隆雄・加固希支男・松瀬仁・山本大貴・志の算数研究会 著 / 明治図書出版 / 2018年2月</p>
+          <p>担当：p34–35「子どもの追究意欲を掻き立てる技」／p56–57「ノートに書くスピードをアップさせる技」／p82–83「計算練習が劇的に楽しくなる技」／p98–99「苦手な子を授業の流れに乗せる技」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4181562123" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book book-extra">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4181272192.09.LZZZZZZZ.jpg" alt="すぐに使える！小学校算数 授業のネタ大事典 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>すぐに使える！小学校算数 授業のネタ大事典</h3>
+          <p class="pub">盛山隆雄・加固希支男・松瀬仁・山本大貴・志の算数研究会 著 / 明治図書出版 / 2017年7月</p>
+          <p>担当：p134–135「5年：金太郎ゲームで手がそろうのは何回？」</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4181272192" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
       </article>
     </div>
+
+    <div class="books-toggle"><button type="button" data-target="books-co">もっと見る（+8冊）</button></div>
 
     <h3 style="margin:48px 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">最新の寄稿</h3>
     <div class="books">
@@ -852,7 +978,7 @@
         </div>
         <div class="body">
           <h3>算数授業研究 No.162「探究的な学びのデザイン ― 算数授業の21事例」</h3>
-          <p class="pub">筑波大学附属小学校算数部 編 / 東洋館出版社 / 2026年2月26日</p>
+          <p class="pub">筑波大学附属小学校算数部 編 / 東洋館出版社 / 2026年2月</p>
           <p>「探究的な学び」をテーマに21の算数授業事例を集めた研究誌。実践事例を寄稿。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/4491058563" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
@@ -863,7 +989,7 @@
         </div>
         <div class="body">
           <h3>授業力＆学級経営力 2026年3月号</h3>
-          <p class="pub">明治図書出版 / 2026年2月12日（2026年3月号）</p>
+          <p class="pub">明治図書出版 / 2026年2月（2026年3月号）</p>
           <p>2大特集「次期学習指導要領10大キーワード」「新年度準備のすべて」掲載号。記事を寄稿。</p>
           <a class="buy" href="https://www.amazon.co.jp/dp/B0GFH76CK9" target="_blank" rel="noopener">Amazonで見る</a>
         </div>
@@ -1032,7 +1158,7 @@
           授業見学、教員研修・講演、原稿執筆、教材開発、取材などを承ります。<br>
           ご依頼内容・希望日程・対象・人数をそえて、メールでお問い合わせください。
         </p>
-        <a class="btn" href="mailto:price_nutria.0n@icloud.com" style="text-decoration:none">メールで問い合わせる</a>
+        <a class="btn" href="mailto:price_nutria.0n@icloud.com" style="text-decoration:none">メールで依頼する</a>
         <p style="color:var(--c-muted);font-size:13px;margin:10px 0 0;font-family:Menlo,Consolas,monospace">
           price_nutria.0n@icloud.com
         </p>
@@ -1119,6 +1245,20 @@
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+<script>
+(function(){
+  document.querySelectorAll('.books-toggle button').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var sel = btn.dataset.target;
+      var target = document.querySelector('.' + sel);
+      if (!target) return;
+      var expanded = target.classList.toggle('expanded');
+      var hidden = target.querySelectorAll('.book-extra').length;
+      btn.textContent = expanded ? '閉じる' : 'もっと見る（+' + hidden + '冊）';
+    });
+  });
+})();
 </script>
 </body>
 </html>
