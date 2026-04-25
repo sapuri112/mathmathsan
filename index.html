@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>前田健太 公式サイト | 算数授業・慶應義塾横浜初等部</title>
+<meta name="description" content="前田健太（まえだ けんた／通称：まえけん先生）公式サイト。慶應義塾横浜初等部 教諭。算数教育・学級経営を専門に、授業づくり・教材開発・執筆・講演・算数ネタ研究会の運営など、現場発の発信を続けています。">
+<meta name="keywords" content="前田健太,まえだけんた,まえけん先生,算数,算数授業,慶應義塾横浜初等部,横浜初等部,しかける算数授業,算数ネタ研究会,学校図書,算数教科書">
+<!-- Open Graph (Facebook, LINE, etc.) -->
+<meta property="og:site_name" content="前田健太 公式サイト">
+<meta property="og:title" content="前田健太（まえけん先生）公式サイト">
+<meta property="og:description" content="子どもに、愉しい算数を届けたい。― 私立小学校 教諭・前田健太の活動・著書・実践をまとめた公式サイト。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mathmathsan.netlify.app/">
+<meta property="og:image" content="https://mathmathsan.netlify.app/og-v4.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+
+<!-- Twitter (X) Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mathmathsan">
+<meta name="twitter:creator" content="@mathmathsan">
+<meta name="twitter:title" content="前田健太（まえけん先生）公式サイト">
+<meta name="twitter:description" content="子どもに、愉しい算数を届けたい。― 私立小学校 教諭・前田健太の公式サイト。">
+<meta name="twitter:image" content="https://mathmathsan.netlify.app/og-v4.png">
+
+<!-- Favicon -->
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+  :root{
+    --c-bg:#f4faff;            /* やわらかい空色の背景 */
+    --c-ink:#1a2741;            /* ややブルー寄りの濃紺で文字 */
+    --c-sub:#465670;
+    --c-muted:#7888a0;
+    --c-line:#dbe7f5;           /* 罫線も淡い水色 */
+    --c-accent:#0EA5E9;         /* メイン：明るい空色（sky-500） */
+    --c-accent-ink:#0369a1;     /* 濃いめの青（sky-700） */
+    --c-accent-soft:#e0f2fe;    /* タグ等の極淡い水色（sky-100） */
+    --c-accent-2:#fde047;       /* サブ：やわらかいレモン色（強調用） */
+    --c-card:#ffffff;
+    --radius:14px;              /* 少し丸く */
+    --shadow:0 1px 2px rgba(15,90,160,.06),0 10px 28px rgba(15,90,160,.10);
+    --maxw:1080px;
+  }
+  /* 軽い背景アクセント（空のグラデーション） */
+  body{background-image:radial-gradient(1200px 400px at 80% -100px, rgba(14,165,233,.10), transparent 60%);}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Helvetica Neue","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;
+    color:var(--c-ink);
+    background:var(--c-bg);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    font-feature-settings:"palt";
+  }
+  a{color:var(--c-accent-ink);text-decoration:none;transition:opacity .2s}
+  a:hover{opacity:.7;text-decoration:underline}
+  img{max-width:100%;height:auto;display:block}
+
+  /* ---- Header ---- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,250,247,.92);
+    backdrop-filter:saturate(1.2) blur(8px);
+    border-bottom:1px solid var(--c-line);
+  }
+  .nav{
+    max-width:var(--maxw);margin:0 auto;
+    padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;
+  }
+  .brand{display:flex;align-items:baseline;gap:10px;flex-shrink:0;white-space:nowrap}
+  .brand .name{font-weight:700;font-size:18px;letter-spacing:.02em}
+  .brand .en{color:var(--c-muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+  nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;flex-wrap:wrap}
+  nav a{color:var(--c-sub);font-size:14px;white-space:nowrap}
+  nav a:hover{color:var(--c-accent-ink)}
+
+  /* スマホ：ブランド名を小さく + サブ非表示、メニューを2段で見やすく */
+  @media(max-width:720px){
+    .nav{flex-direction:column;align-items:flex-start;gap:8px;padding:10px 16px}
+    .brand .name{font-size:16px}
+    .brand .en{display:none}
+    nav ul{gap:12px 14px;font-size:13px;width:100%}
+    nav a{font-size:13px}
+  }
+
+  /* ---- Hero ---- */
+  .hero{
+    max-width:var(--maxw);margin:0 auto;
+    padding:80px 24px 56px;
+  }
+  .hero .eyebrow{
+    color:var(--c-accent-ink);
+    letter-spacing:.2em;font-size:12px;text-transform:uppercase;
+    margin-bottom:20px;font-weight:600;
+  }
+  .hero h1{
+    font-size:clamp(28px,4.6vw,52px);
+    font-weight:800;
+    line-height:1.3;
+    margin:0 0 20px;
+    letter-spacing:.02em;
+    color:var(--c-ink);
+  }
+  .hero h1 .hl{
+    background:linear-gradient(transparent 65%, var(--c-accent-2) 65%, var(--c-accent-2) 92%, transparent 92%);
+    padding:0 .15em;
+  }
+  .hero h1 small{display:block;font-size:14px;color:var(--c-muted);font-weight:500;margin-top:10px;letter-spacing:.14em}
+  .hero .lead{
+    max-width:720px;
+    font-size:17px;color:var(--c-sub);
+    margin:0 0 28px;
+  }
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:999px;
+    font-size:14px;font-weight:700;
+    border:1px solid var(--c-accent);
+    background:var(--c-accent);color:#fff;
+    box-shadow:0 6px 16px rgba(14,165,233,.25);
+    transition:transform .15s, box-shadow .15s, opacity .15s;
+  }
+  .btn:hover{opacity:.95;transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,165,233,.35);text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--c-accent-ink)}
+
+  /* ---- Section ---- */
+  section{padding:64px 24px;border-top:1px solid var(--c-line)}
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  .sec-head{margin-bottom:36px}
+  .sec-head .kicker{
+    color:var(--c-accent-ink);letter-spacing:.22em;
+    font-size:12px;text-transform:uppercase;font-weight:700;
+    margin-bottom:10px;
+  }
+  .sec-head h2{
+    font-size:clamp(22px,2.6vw,30px);
+    margin:0;font-weight:700;letter-spacing:.02em;
+  }
+  .sec-head p{color:var(--c-sub);margin:10px 0 0;max-width:720px}
+
+  /* ---- About ---- */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+  .about-grid p{margin:0 0 16px;color:var(--c-sub)}
+  .portrait{
+    display:flex;align-items:center;gap:22px;
+    margin:0 0 24px;
+  }
+  .portrait .avatar{
+    flex:0 0 144px;width:144px;height:144px;
+    border-radius:50%;overflow:hidden;
+    background:var(--c-accent-soft);
+    box-shadow:0 4px 8px rgba(0,0,0,.06),0 18px 38px rgba(14,165,233,.30);
+    border:4px solid #fff;
+    outline:2px solid var(--c-accent-soft);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--c-accent-ink);font-weight:800;font-size:42px;letter-spacing:.04em;
+  }
+  .portrait .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .portrait .caption{font-size:13px;color:var(--c-muted);line-height:1.6}
+  .portrait .caption strong{display:block;color:var(--c-ink);font-size:15px;margin-bottom:4px}
+  @media(max-width:520px){
+    .portrait{flex-direction:column;align-items:flex-start;gap:14px}
+    .portrait .avatar{width:110px;height:110px;flex-basis:110px}
+  }
+  .facts{
+    background:var(--c-card);border:1px solid var(--c-line);
+    border-radius:var(--radius);padding:24px;
+    box-shadow:var(--shadow);
+  }
+  .facts dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px}
+  .facts dt{color:var(--c-muted);font-size:13px;padding-top:2px;white-space:nowrap}
+  .facts dd{margin:0;font-size:14px}
+
+  /* ---- Timeline ---- */
+  .timeline{border-left:2px solid var(--c-accent-soft);padding-left:24px;margin-top:8px}
+  .t-item{position:relative;padding:0 0 22px}
+  .t-item:last-child{padding-bottom:0}
+  .t-item::before{
+    content:"";position:absolute;left:-31px;top:8px;
+    width:10px;height:10px;border-radius:50%;
+    background:var(--c-accent);
+  }
+  .t-year{font-weight:700;color:var(--c-accent-ink);font-size:14px;letter-spacing:.06em}
+  .t-body{color:var(--c-sub);font-size:15px}
+
+  /* ---- Cards ---- */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  @media(max-width:860px){.cards{grid-template-columns:1fr}}
+  .card{
+    background:var(--c-card);border:1px solid var(--c-line);
+    border-radius:var(--radius);padding:24px;
+    box-shadow:var(--shadow);
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .card h3{margin:0;font-size:17px;letter-spacing:.02em}
+  .card .meta{color:var(--c-muted);font-size:12px;letter-spacing:.08em}
+  .card p{margin:0;color:var(--c-sub);font-size:14px}
+  .card .tag{
+    display:inline-block;background:var(--c-accent-soft);
+    color:var(--c-accent-ink);font-size:11px;
+    padding:3px 10px;border-radius:999px;letter-spacing:.08em;
+    font-weight:600;align-self:flex-start;
+  }
+
+  /* ---- Books ---- */
+  .books{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  @media(max-width:860px){.books{grid-template-columns:1fr}}
+  .book{
+    background:var(--c-card);border:1px solid var(--c-line);
+    border-radius:var(--radius);padding:22px 24px;
+    display:flex;gap:20px;align-items:flex-start;
+    box-shadow:var(--shadow);
+    transition:transform .18s, box-shadow .18s;
+  }
+  .book:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(17,24,39,.06),0 14px 34px rgba(17,24,39,.08)}
+  .book .cover{
+    flex:0 0 120px;
+    aspect-ratio: 3 / 4;
+    border-radius:6px;
+    overflow:hidden;
+    background:linear-gradient(180deg,#e6f4ff,#c6e3f7);
+    box-shadow:0 1px 2px rgba(0,0,0,.08),0 6px 14px rgba(0,0,0,.08);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--c-accent-ink);font-weight:700;font-size:13px;text-align:center;padding:10px;line-height:1.4;
+  }
+  .book .cover img{width:100%;height:100%;object-fit:cover;display:block}
+  .book .body{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+  .book h3{margin:0;font-size:16px;line-height:1.5}
+  .book .pub{color:var(--c-muted);font-size:12px;margin:0}
+  .book p{margin:0;color:var(--c-sub);font-size:13px}
+  .book .buy{
+    display:inline-flex;align-items:center;gap:6px;
+    align-self:flex-start;margin-top:6px;
+    padding:8px 14px;border-radius:999px;
+    background:#ff9900;color:#111;
+    font-size:12px;font-weight:700;letter-spacing:.04em;
+    border:1px solid #e28a00;
+    transition:opacity .15s, transform .15s;
+  }
+  .book .buy:hover{opacity:.9;transform:translateY(-1px);text-decoration:none}
+  .book .buy::before{content:"▶";font-size:9px}
+
+  /* ---- Media ---- */
+  .media-list{list-style:none;padding:0;margin:0;display:grid;gap:0}
+  .media-list li{border-bottom:1px dashed var(--c-line)}
+  .media-list a.item,
+  .media-list .item{
+    display:grid;grid-template-columns:180px 1fr auto;
+    gap:16px;align-items:center;
+    padding:16px 8px;
+    font-size:14px;color:inherit;
+    border-radius:6px;
+    transition:background .15s, transform .15s;
+  }
+  .media-list a.item:hover{background:var(--c-accent-soft);text-decoration:none;transform:translateX(2px)}
+  @media(max-width:600px){
+    .media-list a.item, .media-list .item{grid-template-columns:1fr;gap:6px}
+    .media-list .arrow{display:none}
+  }
+  .media-list .outlet{color:var(--c-accent-ink);font-weight:600;font-size:13px;letter-spacing:.04em}
+  .media-list .title{color:var(--c-sub)}
+  .media-list .arrow{
+    color:var(--c-accent-ink);font-size:13px;font-weight:700;
+    justify-self:end;opacity:.7;
+  }
+  .media-list a.item:hover .arrow{opacity:1;transform:translateX(2px)}
+
+  /* ---- Contact ---- */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+  .sns{display:flex;flex-wrap:wrap;gap:10px}
+  .sns a{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 16px;border:1px solid var(--c-line);
+    background:#fff;border-radius:999px;font-size:13px;
+    color:var(--c-ink);
+  }
+  .sns a:hover{border-color:var(--c-accent);color:var(--c-accent-ink);text-decoration:none}
+  .sns span.dot{width:6px;height:6px;border-radius:50%;background:var(--c-accent)}
+
+  /* ---- Footer ---- */
+  footer{
+    padding:40px 24px;border-top:1px solid var(--c-line);
+    color:var(--c-muted);font-size:13px;text-align:center;
+  }
+  footer p{margin:6px 0}
+
+  /* utility */
+  .pill{
+    display:inline-block;background:var(--c-accent-soft);
+    color:var(--c-accent-ink);padding:4px 12px;border-radius:999px;
+    font-size:12px;font-weight:600;letter-spacing:.06em;margin:0 6px 6px 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="nav">
+    <div class="brand">
+      <span class="name">前田 健太</span>
+      <span class="en" style="color:var(--c-accent-ink)">まえけん先生</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#notes" style="color:var(--c-accent-ink);font-weight:700">📝 授業ノート</a></li>
+        <li><a href="#about">プロフィール</a></li>
+        <li><a href="#books">著書</a></li>
+        <li><a href="#works">活動</a></li>
+        <li><a href="#media">メディア</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" style="border-top:none">
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center">
+    <div>
+      <p class="eyebrow">Mathematics Teacher &nbsp;/&nbsp; Educator</p>
+      <h1>
+        子どもに、<br><span class="hl">愉しい算数</span>を届けたい。
+      </h1>
+      <p class="lead" style="font-size:18px">
+        研究テーマは「<strong>算数授業における"愉しさ"</strong>」。<br>
+        「できた」「わかった」を超えて、<strong>子ども自身が算数そのものを愉しめる時間</strong>をつくることを追究しています。
+      </p>
+      <div class="actions">
+        <a class="btn" href="mailto:price_nutria.0n@icloud.com">授業見学・執筆・講演のご依頼</a>
+        <a class="btn ghost" href="#books">著書を見る</a>
+      </div>
+    </div>
+
+    <!-- 「ふしぎな数 37」イラスト -->
+    <div style="display:flex;justify-content:center" aria-hidden="true">
+      <svg viewBox="0 0 340 360" width="100%" style="max-width:340px;height:auto;transform:rotate(-2deg);filter:drop-shadow(0 14px 28px rgba(14,165,233,.18))" xmlns="http://www.w3.org/2000/svg">
+        <!-- ノート風背景 -->
+        <rect x="10" y="10" width="320" height="340" rx="18" fill="#ffffff" stroke="#dbe7f5" stroke-width="2"/>
+        <!-- 罫線 -->
+        <g stroke="#e6f4ff" stroke-width="1">
+          <line x1="30" y1="80" x2="310" y2="80"/>
+          <line x1="30" y1="130" x2="310" y2="130"/>
+          <line x1="30" y1="180" x2="310" y2="180"/>
+          <line x1="30" y1="230" x2="310" y2="230"/>
+          <line x1="30" y1="280" x2="310" y2="280"/>
+          <line x1="30" y1="330" x2="310" y2="330"/>
+        </g>
+        <!-- 左の赤いマージン線 -->
+        <line x1="50" y1="20" x2="50" y2="340" stroke="#fcd5cf" stroke-width="1.5"/>
+
+        <!-- タイトル -->
+        <text x="180" y="48" text-anchor="middle" font-family="'Hiragino Sans','Yu Gothic',sans-serif" font-size="15" font-weight="800" fill="#0369a1" letter-spacing="2">ふしぎな数 ３７</text>
+
+        <!-- 4行の数式 -->
+        <g font-family="'Helvetica Neue','Hiragino Sans',sans-serif" font-weight="800" font-size="26" fill="#1a2741">
+          <!-- 37 × 3 = 111 -->
+          <text x="60" y="118">37</text>
+          <text x="120" y="118" fill="#0EA5E9">×</text>
+          <text x="146" y="118">3</text>
+          <text x="180" y="118" fill="#0EA5E9">=</text>
+          <rect x="218" y="92" width="86" height="36" rx="6" fill="#dbeafe"/>
+          <text x="261" y="120" text-anchor="middle" fill="#1e40af">111</text>
+
+          <!-- 37 × 6 = 222 -->
+          <text x="60" y="168">37</text>
+          <text x="120" y="168" fill="#0EA5E9">×</text>
+          <text x="146" y="168">6</text>
+          <text x="180" y="168" fill="#0EA5E9">=</text>
+          <rect x="218" y="142" width="86" height="36" rx="6" fill="#bae6fd"/>
+          <text x="261" y="170" text-anchor="middle" fill="#0369a1">222</text>
+
+          <!-- 37 × 9 = 333 -->
+          <text x="60" y="218">37</text>
+          <text x="120" y="218" fill="#0EA5E9">×</text>
+          <text x="146" y="218">9</text>
+          <text x="180" y="218" fill="#0EA5E9">=</text>
+          <rect x="218" y="192" width="86" height="36" rx="6" fill="#7dd3fc"/>
+          <text x="261" y="220" text-anchor="middle" fill="#0c4a6e">333</text>
+
+          <!-- 37 × 12 = 444 -->
+          <text x="60" y="268">37</text>
+          <text x="116" y="268" fill="#0EA5E9">×</text>
+          <text x="138" y="268">12</text>
+          <text x="180" y="268" fill="#0EA5E9">=</text>
+          <rect x="218" y="242" width="86" height="36" rx="6" fill="#fde047"/>
+          <text x="261" y="270" text-anchor="middle" fill="#7c2d12">444</text>
+        </g>
+
+        <!-- 吹き出し風メモ -->
+        <g transform="translate(60, 320)">
+          <text font-family="'Hiragino Sans','Yu Gothic',sans-serif" font-size="14" font-weight="700" fill="#0369a1">あれ？　もしかして…？</text>
+        </g>
+
+        <!-- アクセント -->
+        <circle cx="298" cy="36" r="6" fill="#fde047" opacity="0.8"/>
+        <circle cx="42" cy="340" r="4" fill="#0EA5E9" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+@media(max-width:780px){
+  .hero > div[style*="grid-template-columns:1.4fr 1fr"]{
+    grid-template-columns:1fr !important;
+    gap:30px !important;
+  }
+  .hero > div[style*="grid-template-columns:1.4fr 1fr"] svg{
+    max-width:260px !important;
+  }
+}
+</style>
+
+<!-- 授業ノート（noteから自動取得） -->
+<section id="notes" style="padding:64px 24px;background:linear-gradient(180deg,var(--c-bg) 0%,#ffffff 100%)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Daily Notes</div>
+      <h2>毎日の授業ノート　<span style="font-size:13px;color:var(--c-muted);font-weight:500;letter-spacing:.04em">― note より自動取得</span></h2>
+    </div>
+
+    <div id="note-list" class="cards" style="grid-template-columns:repeat(3,1fr)">
+      <!-- ここに JS で記事カードが描画される -->
+      <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">
+        最新の授業ノートを読み込み中…
+      </div>
+    </div>
+
+    <!-- 過去の算数ネタアーカイブ -->
+    <a href="https://posfie.com/@ord_realdgame/p/BsjsXRQ" target="_blank" rel="noopener"
+       style="display:flex;align-items:center;gap:18px;max-width:760px;margin:32px auto 0;padding:18px 22px;background:#fff;border:2px dashed var(--c-accent);border-radius:14px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s">
+      <div style="flex-shrink:0;width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,#fde047,#f59e0b);display:flex;align-items:center;justify-content:center;font-size:26px">📚</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;color:var(--c-muted);letter-spacing:.1em;font-weight:700;margin-bottom:3px">ARCHIVE</div>
+        <div style="font-weight:800;font-size:16px;color:var(--c-ink);line-height:1.4">過去の算数ネタまとめ（X 投稿アーカイブ）</div>
+        <div style="color:var(--c-sub);font-size:12px;margin-top:3px">posfie に過去の算数ネタが多数まとまっています →</div>
+      </div>
+      <div style="flex-shrink:0;color:var(--c-accent-ink);font-size:20px;font-weight:800">→</div>
+    </a>
+
+    <p style="text-align:center;margin:28px 0 0">
+      <a class="btn" href="https://note.com/mathmathasan" target="_blank" rel="noopener" style="text-decoration:none">noteで全ての授業ノートを見る</a>
+    </p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var FEED = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://note.com/mathmathasan/rss');
+  var listEl = document.getElementById('note-list');
+  var GRADIENTS = [
+    'linear-gradient(135deg,#0EA5E9 0%,#0369a1 100%)',
+    'linear-gradient(135deg,#fde047 0%,#f59e0b 100%)',
+    'linear-gradient(135deg,#7dd3fc 0%,#0EA5E9 100%)'
+  ];
+  function fmtDate(s){
+    var d = new Date(s);
+    if (isNaN(d)) return '';
+    return d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + String(d.getDate()).padStart(2,'0');
+  }
+  function esc(s){ return (s||'').replace(/[&<>"']/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function strip(html){
+    var d = document.createElement('div');
+    d.innerHTML = html || '';
+    return (d.textContent || d.innerText || '').trim();
+  }
+  fetch(FEED).then(function(r){return r.json();}).then(function(data){
+    if (data.status !== 'ok' || !data.items || data.items.length === 0){
+      listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">最新の記事は <a href="https://note.com/mathmathasan" target="_blank" rel="noopener">note</a> でご覧ください。</div>';
+      return;
+    }
+    var items = data.items.slice(0, 3);
+    listEl.innerHTML = items.map(function(it, idx){
+      var bg = GRADIENTS[idx % GRADIENTS.length];
+      var fg = idx === 1 ? '#7c2d12' : '#ffffff';
+      var excerpt = strip(it.description || it.content || '').slice(0, 80);
+      return '<a class="card note-card" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
+        '<div class="note-cover" style="background:' + bg + ';color:' + fg + '">' + esc(it.title) + '</div>' +
+        '<div class="note-body">' +
+          '<div class="note-date">📝 ' + fmtDate(it.pubDate) + '</div>' +
+          '<p class="note-excerpt">' + esc(excerpt) + (excerpt.length >= 80 ? '…' : '') + '</p>' +
+        '</div>' +
+      '</a>';
+    }).join('');
+  }).catch(function(){
+    listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">最新の記事は <a href="https://note.com/mathmathasan" target="_blank" rel="noopener">note</a> でご覧ください。</div>';
+  });
+})();
+</script>
+
+<style>
+  /* note カード基本スタイル */
+  .note-card{color:inherit;text-decoration:none;padding:0!important;overflow:hidden;display:flex;flex-direction:column}
+  .note-cover{width:100%;aspect-ratio:16/8;display:flex;align-items:center;justify-content:center;font-weight:800;padding:18px;text-align:center;font-size:17px;line-height:1.4;letter-spacing:.02em}
+  .note-body{padding:16px 20px 20px}
+  .note-date{font-size:12px;color:var(--c-muted);letter-spacing:.06em;margin-bottom:6px}
+  .note-excerpt{margin:0;color:var(--c-sub);font-size:13px;line-height:1.6}
+
+  /* スマホ：縦積み 1カラム・横長コンパクトカード */
+  @media(max-width:860px){
+    #note-list{grid-template-columns:1fr!important;gap:10px!important}
+    .note-card{flex-direction:row!important;align-items:stretch}
+    .note-cover{aspect-ratio:auto;width:36%;min-width:120px;max-width:160px;padding:10px 8px;font-size:13px;line-height:1.35;flex-shrink:0;display:flex;align-items:center;justify-content:center;text-align:center}
+    .note-body{flex:1;padding:12px 14px;min-width:0}
+    .note-date{font-size:11px;margin-bottom:4px;color:var(--c-muted)}
+    .note-excerpt{font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+  }
+</style>
+
+<!-- About -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Profile</div>
+      <h2>プロフィール</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <div class="portrait">
+          <div class="avatar" aria-label="前田健太">
+            <img src="data:image/jpeg;base64,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" alt="前田 健太">
+          </div>
+          <div class="caption">
+            <strong>前田 健太 / Kenta Maeda</strong>
+            <span style="display:inline-block;margin-top:2px;padding:1px 8px;background:var(--c-accent-soft);color:var(--c-accent-ink);border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em">通称：まえけん先生</span><br>
+            慶應義塾横浜初等部 教諭<br>
+            算数を、愉しい時間に。
+          </div>
+        </div>
+        <p style="font-size:16px;color:var(--c-ink);line-height:1.9">
+          前田健太（まえだ けんた）。<strong>長崎県</strong>出身。
+          京都ノートルダム学院小学校、国立学園小学校を経て、現在 <strong>慶應義塾横浜初等部 教諭</strong>。
+          <strong>1年生担任</strong>。専門は<strong>算数</strong>。研究分野は<strong>算数教育・学級経営</strong>。
+        </p>
+
+        <h4 style="margin:28px 0 8px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.1em">研究テーマ</h4>
+        <p style="margin:0;color:var(--c-sub);font-size:14px;line-height:1.9">
+          算数授業における「愉しさ」<br>
+          <span style="color:var(--c-muted);font-size:13px">子どもの「あれ？」「もしかして…？」が立ち上がる瞬間を、教材・発問・板書からデザイン。</span>
+        </p>
+
+        <h4 style="margin:28px 0 8px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.1em">先生方と学び合う</h4>
+        <ul style="margin:0;padding-left:1.2em;color:var(--c-sub);font-size:14px;line-height:1.9">
+          <li><strong>所属研究会</strong>　全国算数授業研究会／志算研／ガウスの会／BMP</li>
+          <li><strong>研究授業・研究会</strong>　パネラー・司会・実践発表を担当</li>
+          <li><strong>主宰コミュニティ</strong>　<a href="https://line.me/ti/g2/PIVH6_MKkSUj9TW785-kUnK-Ej9AtGlLiUDXHQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener" style="color:#06873d;text-decoration:underline;text-decoration-color:#06C755;text-underline-offset:3px;font-weight:700">オープンチャット「算数ネタ研究会」</a> ― 算数授業のネタ（教材）を全国の先生方と共有<span style="color:#c2410c;font-size:12px">　※参加申請時は必ず所属名を記入</span></li>
+          <li><strong>講演・教員研修</strong>　綾瀬市・川西市 ほか各地で実施</li>
+        </ul>
+
+        <h4 style="margin:28px 0 8px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.1em">形にして届ける</h4>
+        <ul style="margin:0;padding-left:1.2em;color:var(--c-sub);font-size:14px;line-height:1.9">
+          <li><strong>教科書編集委員</strong>　学校図書「令和4年版 算数教科書／教師用指導書」</li>
+          <li><strong>執筆</strong>　教育雑誌・書籍に継続的に寄稿</li>
+          <li><strong>探究オリンピック（明日の思考力コンテスト）</strong>に問題を提供</li>
+        </ul>
+
+        <!-- 研究業績データベース -->
+        <p style="margin:18px 0 0;padding:12px 16px;background:var(--c-accent-soft);border-radius:8px;font-size:13px;color:var(--c-sub);line-height:1.7">
+          📑 詳細な研究業績は、
+          <a href="https://www.k-ris.keio.ac.jp/html/100015310_ja.html" target="_blank" rel="noopener" style="font-weight:700;color:var(--c-accent-ink);text-decoration:underline">慶應義塾 研究者情報データベース</a>
+          にて公開しています。
+        </p>
+      </div>
+      <aside class="facts" aria-label="リンク・お問い合わせ">
+        <!-- メッセージ -->
+        <div style="margin:0 0 22px;padding:18px 18px 16px;background:linear-gradient(180deg,#fff 0%,var(--c-accent-soft) 100%);border:1px dashed var(--c-accent);border-radius:12px">
+          <div style="font-size:13px;color:var(--c-accent-ink);font-weight:700;letter-spacing:.08em;margin-bottom:8px">大切にしていること</div>
+          <p style="margin:0;font-size:13px;color:var(--c-ink);line-height:1.8">
+            授業は、<strong>学級経営</strong>の上に成り立つ。<br>
+            安心して<strong>「わからない」</strong>と言える教室を土台に、<br>
+            子どもの「あれ？」「もしかして…？」を<br>
+            算数の<strong>愉しさ</strong>へとつなげていく。
+          </p>
+        </div>
+
+        <!-- お問い合わせ -->
+        <h4 style="margin:0 0 10px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.1em">お問い合わせ</h4>
+        <a class="btn" href="mailto:price_nutria.0n@icloud.com" style="width:100%;justify-content:center">メールで依頼する</a>
+        <p style="color:var(--c-muted);font-size:12px;margin:8px 0 0;text-align:center">price_nutria.0n@icloud.com</p>
+        <ul style="list-style:none;margin:14px 0 0;padding:0;font-size:12px;color:var(--c-sub);line-height:1.7">
+          <li>・授業見学のお申し込み</li>
+          <li>・教員研修・講演のご依頼</li>
+          <li>・原稿執筆・取材のご依頼</li>
+          <li>・教材開発のご相談</li>
+        </ul>
+
+        <!-- LINEオープンチャット -->
+        <h4 style="margin:24px 0 10px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.1em">主宰コミュニティ</h4>
+        <a href="https://line.me/ti/g2/PIVH6_MKkSUj9TW785-kUnK-Ej9AtGlLiUDXHQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener" style="display:block;padding:12px 14px;background:#06C755;color:#fff;border-radius:10px;text-decoration:none;font-size:13px;font-weight:700;text-align:center">
+          LINE オープンチャット<br>「算数ネタ研究会」へ参加
+        </a>
+        <p style="color:#c2410c;font-size:11px;margin:6px 0 0;text-align:center;line-height:1.5">
+          ※申請時は所属名（学校名等）を必ず記入
+        </p>
+
+        <!-- ページ内ナビ -->
+        <h4 style="margin:24px 0 10px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.1em">もっと見る</h4>
+        <ul style="list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13px">
+          <li><a href="#books">→ 著書</a></li>
+          <li><a href="#works">→ 活動・プロジェクト</a></li>
+          <li><a href="#contact">→ SNS・公式リンク</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <div style="margin-top:30px">
+      <span class="pill">算数授業</span>
+      <span class="pill">愉しさ</span>
+      <span class="pill">教材開発</span>
+      <span class="pill">学級経営</span>
+      <span class="pill">算数ネタ</span>
+    </div>
+  </div>
+</section>
+
+<!-- Books -->
+<section id="books">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Publications</div>
+      <h2>著書</h2>
+    </div>
+    <h3 style="margin:0 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">単著</h3>
+    <div class="books">
+      <article class="book" style="border:2px solid var(--c-accent);position:relative">
+        <span style="position:absolute;top:-12px;left:18px;background:var(--c-accent);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;padding:3px 10px;border-radius:999px">最新刊</span>
+        <span style="position:absolute;top:-12px;right:18px;background:#fff;color:var(--c-accent-ink);font-size:11px;font-weight:800;letter-spacing:.06em;padding:3px 10px;border-radius:999px;border:1.5px solid var(--c-accent-ink)">教員向け</span>
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4491063354.09.LZZZZZZZ.jpg" alt="算数 おもしろ問題で愉しい！授業づくり 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>算数 おもしろ問題で愉しい！授業づくり</h3>
+          <p class="pub">前田健太 / 東洋館出版社 / 2026年2月24日</p>
+          <p><strong>先生のための1冊。</strong>「おもしろ問題」を授業で使うよさと効果的な使い方を整理し、実際の授業実践例と、明日から教室で使えるおもしろ問題集をあわせて掲載。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4491063354" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book" style="border:2px solid var(--c-accent);position:relative">
+        <span style="position:absolute;top:-12px;left:18px;background:var(--c-accent);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;padding:3px 10px;border-radius:999px">最新刊</span>
+        <span style="position:absolute;top:-12px;right:18px;background:#fff;color:#c2410c;font-size:11px;font-weight:800;letter-spacing:.06em;padding:3px 10px;border-radius:999px;border:1.5px solid #c2410c">一般向け</span>
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4046078944.09.LZZZZZZZ.jpg" alt="絶対解きたくなる！考えるのが楽しくてとまらない算数 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>絶対解きたくなる！考えるのが楽しくてとまらない算数</h3>
+          <p class="pub">前田健太 / KADOKAWA / 2026年1月19日</p>
+          <p><strong>子どもから大人まで楽しめる1冊。</strong>「1兆秒生きられるか？」「ポイント還元と現金値引、どちらが得？」など、思わず取り組みたくなる算数問題を多数収録。家族で読んでも、ひとりで没頭しても、考えるのが愉しくてとまらない。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4046078944" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4183424380.09.LZZZZZZZ.jpg" alt="しかける！算数授業 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>しかける！算数授業</h3>
+          <p class="pub">前田健太 / 明治図書出版 / 2023年2月10日</p>
+          <p><strong>初の単著。</strong>子どもの思考が動き出す「しかけ」を、教材・発問・板書・反応・話し合い・自学までジャンル別に44個収録。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4183424380" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 style="margin:48px 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">共著・監修</h3>
+    <div class="books">
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4184964265.09.LZZZZZZZ.jpg" alt="図解 小学4年の学級経営 世界一わかりやすいクラスづくりの本 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>図解 小学4年〜6年の学級経営 世界一わかりやすいクラスづくりの本</h3>
+          <p class="pub">『授業力&amp;学級経営力』編集部 編 / 明治図書出版 / 2026年4月27日</p>
+          <p>各学年の学級経営を、新年度準備・授業開き・係活動・行事・年度末まで「図解」で整理した実践書シリーズ。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4184964265" target="_blank" rel="noopener">Amazonで見る（4年）</a>
+        </div>
+      </article>
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/449105777X.09.LZZZZZZZ.jpg" alt="はじめての算数 ―授業の基礎・基本 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>はじめての算数 ―授業の基礎・基本</h3>
+          <p class="pub">森本隆史 編 / 東洋館出版社 / 2025年3月18日</p>
+          <p>算数授業を初めて担当する先生に向けた基礎・基本の1冊。「算数の家庭学習」（pp.104–118）を分担執筆。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/449105777X" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4185001347.09.LZZZZZZZ.jpg" alt="小学1年の学級づくり&授業づくり 12か月の仕事術 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>小学1年の学級づくり&amp;授業づくり 12か月の仕事術</h3>
+          <p class="pub">安藤浩太 ほか共著 / 明治図書出版 / 2025年2月28日</p>
+          <p>1年生担任のための、4月から3月までの学級経営・授業づくりを月別に解説した1冊。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4185001347" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4811331877.09.LZZZZZZZ.jpg" alt="数字のトリックを見ぬけ はじめてのデータリテラシー 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>数字のトリックを見ぬけ はじめてのデータリテラシー（全3巻）</h3>
+          <p class="pub">前田健太 監修 / 汐文社 / 2025年2月10日</p>
+          <p>小学生から学べるデータリテラシーの入門書。身近な題材で「数字の見せ方」のトリックを読み解く全3巻シリーズ。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4811331877" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+    </div>
+
+    <h3 style="margin:48px 0 18px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.16em;font-weight:800">最新の寄稿</h3>
+    <div class="books">
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/4491058563.09.LZZZZZZZ.jpg" alt="算数授業研究 No.162 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>算数授業研究 No.162「探究的な学びのデザイン ― 算数授業の21事例」</h3>
+          <p class="pub">筑波大学附属小学校算数部 編 / 東洋館出版社 / 2026年2月26日</p>
+          <p>「探究的な学び」をテーマに21の算数授業事例を集めた研究誌。実践事例を寄稿。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/4491058563" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+      <article class="book">
+        <div class="cover">
+          <img src="https://images-na.ssl-images-amazon.com/images/P/B0GFH76CK9.09.LZZZZZZZ.jpg" alt="授業力＆学級経営力 2026年3月号 書影" loading="lazy">
+        </div>
+        <div class="body">
+          <h3>授業力＆学級経営力 2026年3月号</h3>
+          <p class="pub">明治図書出版 / 2026年2月12日（2026年3月号）</p>
+          <p>2大特集「次期学習指導要領10大キーワード」「新年度準備のすべて」掲載号。記事を寄稿。</p>
+          <a class="buy" href="https://www.amazon.co.jp/dp/B0GFH76CK9" target="_blank" rel="noopener">Amazonで見る</a>
+        </div>
+      </article>
+    </div>
+    <p style="color:var(--c-muted);font-size:13px;margin-top:18px">
+      ※書影はAmazonの画像を参照しています。最新の書誌情報・在庫は各オンライン書店（Amazon／明治図書／東洋館出版社／汐文社／KADOKAWA など）をご確認ください。
+    </p>
+
+  </div>
+</section>
+
+<!-- Works -->
+<section id="works">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Activities &amp; Projects</div>
+      <h2>活動・プロジェクト</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <span class="tag">教科書編集</span>
+        <h3>学校図書 算数教科書 編集委員</h3>
+        <p class="meta">令和4年版〜継続</p>
+        <p>教科書本体・教師用指導書の編集に参画。全国の教室で使われる教材・問題・展開を共同で設計。</p>
+      </article>
+      <a class="card" href="https://line.me/ti/g2/PIVH6_MKkSUj9TW785-kUnK-Ej9AtGlLiUDXHQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">
+        <span class="tag">主宰</span>
+        <h3>オープンチャット「算数ネタ研究会」 →</h3>
+        <p class="meta">教員・教職希望者限定 / 主宰</p>
+        <p>全国の先生方と算数ネタ（教材）を共有するオンラインコミュニティを運営。タップでオープンチャットに参加できます。</p>
+        <p style="margin-top:8px;padding:8px 12px;background:#fff4e5;border-left:3px solid #f59e0b;color:#92400e;font-size:12px;line-height:1.6;font-weight:600">
+          ⚠ 参加申請時は<strong>所属名（学校名・自治体名など）</strong>を必ずご記入ください。
+        </p>
+      </a>
+      <article class="card">
+        <span class="tag">研究会</span>
+        <h3>全国算数授業研究会 ほか</h3>
+        <p class="meta">全国算数授業研究会／志算研／ガウスの会／BMP</p>
+        <p>研究授業・授業研究会のパネラー・司会・提案授業を多数担当。算数教育の研究コミュニティで実践を発表。</p>
+      </article>
+      <article class="card">
+        <span class="tag">講演・研修</span>
+        <h3>各地での講演・教員研修</h3>
+        <p class="meta">綾瀬市／川西市 ほか</p>
+        <p>自治体・教育委員会・教員研修で、算数授業づくり・教材論をテーマに講演。授業見学の受入も実施。</p>
+      </article>
+      <article class="card">
+        <span class="tag">問題提供</span>
+        <h3>探究オリンピック（明日の思考力コンテスト）</h3>
+        <p class="meta">問題提供</p>
+        <p>小学生対象の思考力コンテスト「探究オリンピック」（共催：日本OECD共同研究・国際共創プロジェクト「壁のないあそび場-bA-」／さんすう数学あそび座）に出題される問題の作成・提供に携わる。</p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<!-- Media -->
+<section id="media">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Media &amp; Activities</div>
+      <h2>メディア掲載</h2>
+    </div>
+    <ul class="media-list">
+      <li>
+        <span class="item">
+          <span class="outlet">先生コネクト<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">ネット記事 / 2024年12月</small></span>
+          <span class="title">試行錯誤する愉（たの）しい算数授業　仲間と協働し多様な考えも知る</span>
+          <span class="arrow"></span>
+        </span>
+      </li>
+      <li>
+        <span class="item">
+          <span class="outlet">読売テレビ<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">朝生ワイド す・またん！（とれたてリサーチ） / 2023年7月</small></span>
+          <span class="title">【小学生の疑問】コーヒー牛乳はナゼ少ない？</span>
+          <span class="arrow"></span>
+        </span>
+      </li>
+      <li>
+        <span class="item">
+          <span class="outlet">J-CASTニュース<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">ネット記事 / 2023年7月</small></span>
+          <span class="title">なぜ600mL入る容器で「雪印コーヒー500mL」販売？　小2問い合わせに「神対応」…メーカーは反響に驚き＆戸惑い</span>
+          <span class="arrow"></span>
+        </span>
+      </li>
+      <li>
+        <span class="item">
+          <span class="outlet">ほ・とせなNEWS<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">ネット記事 / 2023年7月</small></span>
+          <span class="title">"紙パック"に疑問を持った小学生が企業に問い合わせ → 企業からの丁寧な対応に「素晴らしい」の声</span>
+          <span class="arrow"></span>
+        </span>
+      </li>
+      <li>
+        <span class="item">
+          <span class="outlet">フジテレビ<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">Live News it! / 2020年1月</small></span>
+          <span class="title">1リットル牛乳は実は1リットルない？　小学校の算数授業がきっかけで物議</span>
+          <span class="arrow"></span>
+        </span>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+<!-- X / SNS -->
+<section id="x-timeline">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Daily &amp; Community</div>
+      <h2>毎日の発信は X と オープンチャットで</h2>
+      <p>算数授業のネタ（教材）・教室での気づきを、X で日々発信。<br>全国の先生方とつながるオープンチャットも主宰しています。</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:920px;margin:0 auto">
+      <!-- X カード -->
+      <div style="background:var(--c-card);border:1px solid var(--c-line);border-radius:var(--radius);padding:32px 26px;box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:16px;background:#000;color:#fff;font-weight:900;font-size:30px;font-family:Helvetica,Arial,sans-serif;margin:0 auto 18px">𝕏</div>
+        <div style="font-size:11px;color:var(--c-muted);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:6px">X (Twitter)</div>
+        <div style="font-weight:800;font-size:22px;color:var(--c-ink);margin-bottom:14px;line-height:1.3">@mathmathsan</div>
+        <p style="margin:0 0 22px;color:var(--c-sub);font-size:14px;line-height:1.7;flex:1">
+          算数授業のネタ（教材）・<br>教室での気づきを毎日発信。
+        </p>
+        <a class="btn" href="https://x.com/mathmathsan" target="_blank" rel="noopener" style="text-decoration:none;justify-content:center;width:100%">Xで最新投稿を見る</a>
+      </div>
+
+      <!-- LINE オープンチャット カード -->
+      <div style="background:var(--c-card);border:1px solid var(--c-line);border-radius:var(--radius);padding:32px 26px;box-shadow:var(--shadow);text-align:center;display:flex;flex-direction:column">
+        <div style="display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:16px;background:#06C755;color:#fff;font-weight:900;font-size:22px;font-family:Helvetica,Arial,sans-serif;margin:0 auto 18px">LINE</div>
+        <div style="font-size:11px;color:var(--c-muted);letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:6px">Open Chat</div>
+        <div style="font-weight:800;font-size:22px;color:var(--c-ink);margin-bottom:14px;line-height:1.3">「算数ネタ研究会」</div>
+        <p style="margin:0 0 22px;color:var(--c-sub);font-size:14px;line-height:1.7;flex:1">
+          全国の先生方と算数ネタ・<br>教材アイデアを共有。
+        </p>
+        <a class="btn" href="https://line.me/ti/g2/PIVH6_MKkSUj9TW785-kUnK-Ej9AtGlLiUDXHQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener" style="text-decoration:none;background:#06C755;border-color:#06C755;box-shadow:0 6px 16px rgba(6,199,85,.25);justify-content:center;width:100%">オープンチャットに参加する</a>
+      </div>
+    </div>
+
+    <!-- 注意書き（カード外） -->
+    <p style="max-width:920px;margin:18px auto 0;padding:12px 16px;background:#fff4e5;border-left:3px solid #f59e0b;color:#92400e;font-size:13px;line-height:1.7;border-radius:6px">
+      ⚠ オープンチャットへの参加申請時は<strong>所属名（学校名等）</strong>を必ずご記入ください（教員・教職希望者限定）。
+    </p>
+  </div>
+</section>
+
+<style>
+@media(max-width:720px){
+  #x-timeline .wrap > div[style*="grid-template-columns:repeat(2,1fr)"]{
+    grid-template-columns:1fr !important;
+  }
+}
+</style>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Contact</div>
+      <h2>お問い合わせ・SNS</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h3 style="margin-top:0">仕事のご依頼</h3>
+        <p style="color:var(--c-sub);margin:0 0 16px">
+          授業見学、教員研修・講演、原稿執筆、教材開発、取材などを承ります。<br>
+          ご依頼内容・希望日程・対象・人数をそえて、メールでお問い合わせください。
+        </p>
+        <a class="btn" href="mailto:price_nutria.0n@icloud.com" style="text-decoration:none">メールで問い合わせる</a>
+        <p style="color:var(--c-muted);font-size:13px;margin:10px 0 0;font-family:Menlo,Consolas,monospace">
+          price_nutria.0n@icloud.com
+        </p>
+      </div>
+      <div>
+        <h3 style="margin-top:0">SNS・公式リンク</h3>
+        <div class="sns">
+          <a href="https://x.com/mathmathsan" target="_blank" rel="noopener"><span class="dot"></span>X　@mathmathsan</a>
+          <a href="https://www.instagram.com/kenta_maeda2026/" target="_blank" rel="noopener"><span class="dot"></span>Instagram　@kenta_maeda2026</a>
+          <a href="https://note.com/mathmathasan" target="_blank" rel="noopener"><span class="dot"></span>note</a>
+          <a href="https://lit.link/mathmathsan" target="_blank" rel="noopener"><span class="dot"></span>lit.link（リンク集）</a>
+          <a href="https://www.k-ris.keio.ac.jp/html/100015310_ja.html" target="_blank" rel="noopener"><span class="dot"></span>慶應 研究者情報</a>
+          <a href="https://line.me/ti/g2/PIVH6_MKkSUj9TW785-kUnK-Ej9AtGlLiUDXHQ?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" rel="noopener" style="background:#06C755;color:#fff;border-color:#06C755"><span class="dot" style="background:#fff"></span>LINE オープンチャット「算数ネタ研究会」</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Share -->
+<section id="share" style="padding:56px 24px;background:linear-gradient(180deg,var(--c-accent-soft) 0%,var(--c-bg) 100%);border-top:1px solid var(--c-line)">
+  <div class="wrap" style="text-align:center">
+    <div class="kicker" style="color:var(--c-accent-ink);letter-spacing:.22em;font-size:12px;text-transform:uppercase;font-weight:700;margin-bottom:10px">Share</div>
+    <h2 style="margin:0 0 6px;font-size:24px;font-weight:800">このページをシェアする</h2>
+    <p style="margin:0 0 24px;color:var(--c-sub);font-size:14px">先生方やお知り合いに紹介していただけたら嬉しいです。</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a id="share-x" href="#" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#000;color:#fff;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .15s">
+        <span style="font-family:Helvetica,Arial,sans-serif;font-weight:900;font-size:16px">𝕏</span>
+        Xでシェア
+      </a>
+      <a id="share-fb" href="#" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#1877F2;color:#fff;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(24,119,242,.25);transition:transform .15s">
+        <span style="font-family:Helvetica,Arial,sans-serif;font-weight:900;font-size:18px">f</span>
+        Facebook
+      </a>
+      <a id="share-line" href="#" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#06C755;color:#fff;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(6,199,85,.25);transition:transform .15s">
+        <span style="font-family:Helvetica,Arial,sans-serif;font-weight:900;font-size:13px">LINE</span>
+        で送る
+      </a>
+      <button id="share-copy" type="button"
+              style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#fff;color:var(--c-ink);border:1.5px solid var(--c-line);border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(17,24,39,.06);transition:transform .15s;font-family:inherit">
+        <span style="font-size:14px">🔗</span>
+        URLをコピー
+      </button>
+    </div>
+    <p id="copy-toast" style="margin:14px 0 0;font-size:13px;color:var(--c-accent-ink);font-weight:700;opacity:0;transition:opacity .3s">URLをコピーしました ✓</p>
+  </div>
+</section>
+
+<script>
+(function(){
+  var url = location.href.split('#')[0];
+  var text = '前田健太（まえけん先生）公式サイト ― 子どもに、愉しい算数を届けたい。';
+  var enc = encodeURIComponent;
+  document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + enc(text) + '&url=' + enc(url);
+  document.getElementById('share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + enc(url);
+  document.getElementById('share-line').href = 'https://social-plugins.line.me/lineit/share?url=' + enc(url) + '&text=' + enc(text);
+  document.getElementById('share-copy').addEventListener('click', function(){
+    navigator.clipboard.writeText(url).then(function(){
+      var t = document.getElementById('copy-toast');
+      t.style.opacity = '1';
+      setTimeout(function(){ t.style.opacity = '0'; }, 2000);
+    });
+  });
+})();
+</script>
+
+<footer>
+  <p>&copy; <span id="y"></span> Kenta Maeda. All rights reserved.</p>
+  <p>「算数を、愉しい時間に。」</p>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
