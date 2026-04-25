@@ -1092,6 +1092,16 @@
   document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + enc(text) + '&url=' + enc(url);
   document.getElementById('share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + enc(url);
   document.getElementById('share-line').href = 'https://social-plugins.line.me/lineit/share?url=' + enc(url) + '&text=' + enc(text);
+
+  // Facebook: スマホは sharer.php が機能しないので Web Share API に切り替え（非対応端末は従来挙動）
+  document.getElementById('share-fb').addEventListener('click', function(e){
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile && navigator.share) {
+      e.preventDefault();
+      navigator.share({ title: document.title, text: text, url: url }).catch(function(){});
+    }
+  });
+
   document.getElementById('share-copy').addEventListener('click', function(){
     navigator.clipboard.writeText(url).then(function(){
       var t = document.getElementById('copy-toast');
