@@ -427,7 +427,7 @@
 }
 </script>
 
-<!-- JSON-LD: WebSite (sitelinks search box) -->
+<!-- JSON-LD: WebSite -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -454,6 +454,7 @@
       <ul>
         <li><a href="#notes" style="color:var(--c-accent-ink);font-weight:700">📝 授業ノート</a></li>
         <li><a href="#about">プロフィール</a></li>
+        <li><a href="#upcoming">今後の予定</a></li>
         <li><a href="#books">著書</a></li>
         <li><a href="#works">活動</a></li>
         <li><a href="#media">メディア</a></li>
@@ -476,7 +477,7 @@
         「できた」「わかった」を超えて、<strong>子ども自身が算数そのものを愉しめる時間</strong>をつくることを追究しています。
       </p>
       <div class="actions">
-        <a class="btn" href="mailto:contact@mathmathsan.com">メールで依頼する</a>
+        <a class="btn" href="mailto:contact@mathmathsan.com">メールでの問い合わせ</a>
         <a class="btn ghost" href="#books">著書を見る</a>
       </div>
     </div>
@@ -725,7 +726,7 @@
 
         <!-- お問い合わせ -->
         <h4 style="margin:0 0 10px;font-size:14px;color:var(--c-accent-ink);letter-spacing:.1em">お問い合わせ</h4>
-        <a class="btn" href="mailto:contact@mathmathsan.com" style="width:100%;justify-content:center">メールで依頼する</a>
+        <a class="btn" href="mailto:contact@mathmathsan.com" style="width:100%;justify-content:center">メールでの問い合わせ</a>
         <p style="color:var(--c-muted);font-size:12px;margin:8px 0 0;text-align:center">contact@mathmathsan.com</p>
         <ul style="list-style:none;margin:14px 0 0;padding:0;font-size:12px;color:var(--c-sub);line-height:1.7">
           <li>・授業見学のお申し込み</li>
@@ -762,6 +763,245 @@
     </div>
   </div>
 </section>
+
+<!-- Now (現在進行中の活動) -->
+<section id="now" style="padding:64px 24px;background:linear-gradient(135deg,#0EA5E9 0%,#0369a1 100%);color:#fff;border-top:1px solid var(--c-line);position:relative;overflow:hidden">
+  <div aria-hidden="true" style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)"></div>
+  <div aria-hidden="true" style="position:absolute;bottom:-60px;left:-60px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.04)"></div>
+
+  <div class="wrap" style="position:relative">
+    <div class="sec-head" style="margin-bottom:32px">
+      <div class="kicker" style="color:#bae6fd;display:inline-flex;align-items:center;gap:8px">
+        <span class="now-dot"></span>
+        Now
+      </div>
+      <h2 style="color:#fff;font-size:clamp(24px,3vw,32px)">いま取り組んでいること</h2>
+    </div>
+
+    <div class="now-grid">
+      <article class="now-card">
+        <div class="now-icon" style="background:rgba(255,255,255,.16)">🏫</div>
+        <div class="now-badge">校内研修講師</div>
+        <h3>品川区立後地小学校</h3>
+        <p>校内研修の講師として、算数授業づくりを継続して伴走しています。</p>
+      </article>
+
+      <article class="now-card">
+        <div class="now-icon" style="background:rgba(255,255,255,.16)">🏫</div>
+        <div class="now-badge">校内研修講師</div>
+        <h3>習志野市立実花小学校</h3>
+        <p>校内研修の講師として、算数授業づくりを継続して伴走しています。</p>
+      </article>
+
+      <article class="now-card">
+        <div class="now-icon" style="background:rgba(255,255,255,.16)">📝</div>
+        <div class="now-badge">分担執筆中</div>
+        <h3>1年生 学級経営本</h3>
+        <p>1年生担任向けの学級経営書に、章を分担執筆中。</p>
+      </article>
+
+      <article class="now-card">
+        <div class="now-icon" style="background:rgba(255,255,255,.16)">📅</div>
+        <div class="now-badge" style="background:#fbbf24;color:#7c2d12">2026年7月28日 予定</div>
+        <h3>横須賀市算数研究会 主催<br>算数ワークショップ</h3>
+        <p>横須賀市算数研究会の主催ワークショップに登壇予定。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---- Now ---- */
+  .now-dot{
+    width:10px;height:10px;border-radius:50%;background:#fde047;
+    box-shadow:0 0 0 4px rgba(253,224,71,.35);
+    animation:nowpulse 2s ease-in-out infinite;
+  }
+  @keyframes nowpulse{
+    0%,100%{box-shadow:0 0 0 4px rgba(253,224,71,.35);transform:scale(1)}
+    50%{box-shadow:0 0 0 8px rgba(253,224,71,0);transform:scale(1.15)}
+  }
+  .now-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  }
+  @media(max-width:980px){.now-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.now-grid{grid-template-columns:1fr}}
+  .now-card{
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(8px);
+    border-radius:14px;padding:22px 20px;
+    display:flex;flex-direction:column;gap:10px;
+    color:#fff;text-decoration:none;
+    transition:transform .18s, background .18s, box-shadow .18s;
+  }
+  .now-card:hover{background:rgba(255,255,255,.16);transform:translateY(-2px);text-decoration:none}
+  .now-card-action{cursor:pointer;border-color:rgba(125,211,252,.5)}
+  .now-card-action:hover{box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  .now-icon{
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;flex-shrink:0;
+  }
+  .now-badge{
+    align-self:flex-start;
+    background:rgba(255,255,255,.18);
+    color:#fff;
+    padding:3px 10px;border-radius:999px;
+    font-size:11px;font-weight:700;letter-spacing:.06em;
+  }
+  .now-card h3{margin:4px 0 0;font-size:15px;line-height:1.45;color:#fff;letter-spacing:.02em}
+  .now-card p{margin:0;font-size:13px;line-height:1.7;color:rgba(255,255,255,.88)}
+</style>
+
+<!-- Upcoming (開催予定の研究会・ワークショップ) -->
+<section id="upcoming" style="padding:64px 24px;background:linear-gradient(180deg,#fffbeb 0%,#fff 100%);border-top:1px solid var(--c-line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker" style="color:#b45309;display:inline-flex;align-items:center;gap:8px">
+        <span style="display:inline-block;font-size:14px">📢</span>
+        Upcoming
+      </div>
+      <h2>今後の予定</h2>
+    </div>
+
+    <div class="upcoming-list">
+      <article class="upcoming-card">
+        <div class="upcoming-date">
+          <div class="upcoming-year">2026</div>
+          <div class="upcoming-month">May</div>
+          <div class="upcoming-day">9</div>
+          <div class="upcoming-dow">SAT</div>
+        </div>
+        <div class="upcoming-body">
+          <div class="upcoming-tag">授業力向上講座</div>
+          <h3>授業力向上講座 定例会</h3>
+          <p class="upcoming-venue">📍 横浜国立大学附属横浜小学校</p>
+          <p class="upcoming-desc">13:30〜　元筑波大学附属小学校副校長・現明星小学校校長の<strong>細水保宏</strong>先生とともに学ぶ会。会の終了後はお蕎麦屋へ！🍜</p>
+          <p class="upcoming-status">
+            <span class="status-open">申込不要</span>
+            直接会場までお越しください。
+          </p>
+        </div>
+      </article>
+
+      <article class="upcoming-card">
+        <div class="upcoming-date">
+          <div class="upcoming-year">2026</div>
+          <div class="upcoming-month">June</div>
+          <div class="upcoming-day">20</div>
+          <div class="upcoming-dow">SAT</div>
+        </div>
+        <div class="upcoming-body">
+          <div class="upcoming-tag">公開授業 / 授業研究会</div>
+          <h3>第20回 ガウスの会 算数授業研究会</h3>
+          <p class="upcoming-venue">📍 横浜国立大学附属横浜小学校</p>
+          <p class="upcoming-status">
+            <span class="status-pending">申込サイト準備中</span>
+            主催者からの正式案内をお待ちください。
+          </p>
+        </div>
+      </article>
+
+      <article class="upcoming-card">
+        <div class="upcoming-date">
+          <div class="upcoming-year">2026</div>
+          <div class="upcoming-month">August</div>
+          <div class="upcoming-day">29</div>
+          <div class="upcoming-dow">SAT</div>
+        </div>
+        <div class="upcoming-body">
+          <div class="upcoming-tag">セミナー</div>
+          <h3>学校図書（GAKUTO）セミナー</h3>
+          <p class="upcoming-venue">📍 詳細未定</p>
+          <p class="upcoming-status">
+            <span class="status-pending">詳細・申込情報 準備中</span>
+            主催者からの正式案内をお待ちください。
+          </p>
+        </div>
+      </article>
+
+      <article class="upcoming-card">
+        <div class="upcoming-date">
+          <div class="upcoming-year">2027</div>
+          <div class="upcoming-month">January</div>
+          <div class="upcoming-day">26</div>
+          <div class="upcoming-dow">TUE</div>
+        </div>
+        <div class="upcoming-body">
+          <div class="upcoming-tag">研究大会</div>
+          <h3>第27回 冬季全国算数授業研究大会 私学大会</h3>
+          <p class="upcoming-venue">📍 暁星小学校</p>
+          <p class="upcoming-status">
+            <span class="status-pending">申込サイト準備中</span>
+            主催者からの正式案内をお待ちください。
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <p style="margin:24px 0 0;font-size:12px;color:var(--c-muted);text-align:center;line-height:1.7">
+      ※申込ページが正式公開され次第、各カードに申込リンクを掲載します。
+    </p>
+  </div>
+</section>
+
+<style>
+  /* ---- Upcoming ---- */
+  .upcoming-list{display:grid;gap:20px;grid-template-columns:1fr;grid-auto-rows:1fr}
+  @media(min-width:780px){.upcoming-list{grid-template-columns:repeat(2,1fr)}}
+  .upcoming-card{
+    background:#fff;border:1px solid var(--c-line);border-radius:14px;
+    box-shadow:0 1px 2px rgba(17,24,39,.04),0 8px 24px rgba(180,83,9,.06);
+    overflow:hidden;display:grid;grid-template-columns:128px 1fr;
+    height:100%;
+    transition:transform .18s, box-shadow .18s;
+  }
+  .upcoming-card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(17,24,39,.06),0 16px 36px rgba(180,83,9,.10)}
+  @media(max-width:520px){.upcoming-card{grid-template-columns:1fr}}
+  .upcoming-date{
+    background:linear-gradient(180deg,#f59e0b 0%,#b45309 100%);color:#fff;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:18px 10px;text-align:center;
+  }
+  .upcoming-year{font-size:11px;letter-spacing:.18em;font-weight:700;opacity:.85}
+  .upcoming-month{font-size:13px;letter-spacing:.12em;font-weight:700;text-transform:uppercase;margin-bottom:2px}
+  .upcoming-day{font-size:42px;font-weight:900;line-height:1;letter-spacing:.02em}
+  .upcoming-dow{font-size:11px;letter-spacing:.16em;font-weight:700;margin-top:4px;opacity:.85}
+  .upcoming-body{padding:20px 22px;display:flex;flex-direction:column;gap:8px}
+  .upcoming-tag{
+    display:inline-block;align-self:flex-start;
+    background:var(--c-accent-soft);color:var(--c-accent-ink);
+    font-size:11px;font-weight:700;letter-spacing:.08em;
+    padding:3px 10px;border-radius:999px;
+  }
+  .upcoming-card h3{margin:0;font-size:17px;line-height:1.45;letter-spacing:.02em;color:var(--c-ink)}
+  .upcoming-venue{margin:0;font-size:13px;color:var(--c-sub);font-weight:600}
+  .upcoming-desc{margin:0;font-size:13px;color:var(--c-sub);line-height:1.7}
+  .upcoming-status{
+    margin:auto 0 0;font-size:12px;color:#92400e;line-height:1.6;
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  }
+  .status-open{
+    background:#22c55e;color:#fff;
+    font-size:11px;font-weight:800;letter-spacing:.06em;
+    padding:3px 10px;border-radius:999px;
+  }
+  .status-pending{
+    background:#fde047;color:#7c2d12;
+    font-size:11px;font-weight:800;letter-spacing:.06em;
+    padding:3px 10px;border-radius:999px;
+  }
+  .upcoming-cta{
+    align-self:flex-start;margin-top:8px;
+    padding:10px 18px;border-radius:999px;
+    background:var(--c-accent);color:#fff;
+    font-size:13px;font-weight:700;letter-spacing:.04em;
+    text-decoration:none;
+    transition:transform .15s, opacity .15s;
+  }
+  .upcoming-cta:hover{opacity:.9;transform:translateY(-1px);text-decoration:none}
+</style>
 
 <!-- Books -->
 <section id="books">
@@ -1023,6 +1263,13 @@
     <ul class="media-list">
       <li>
         <span class="item">
+          <span class="outlet">2026年3月<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">講座</small></span>
+          <span class="title">新学期スタートフェス2026 in TOKYO ファイナル<br>「算数の授業開き 〜最高の1年のスタートにするために〜」</span>
+          <span class="arrow"></span>
+        </span>
+      </li>
+      <li>
+        <span class="item">
           <span class="outlet">2026年3月<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">公開授業</small></span>
           <span class="title">BMP授業研究会（小平市立小平第八小学校）<br>1年「3口のたし算・ひき算」</span>
           <span class="arrow"></span>
@@ -1081,13 +1328,6 @@
         <span class="item">
           <span class="outlet">2025年6月<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">公開授業</small></span>
           <span class="title">第19回 ガウスの会 算数授業研究会（横浜国立大学附属横浜小学校）<br>2年「テープの長さは？」</span>
-          <span class="arrow"></span>
-        </span>
-      </li>
-      <li>
-        <span class="item">
-          <span class="outlet">2025年5月<br><small style="color:var(--c-muted);font-size:11px;font-weight:500">講演</small></span>
-          <span class="title">第18回 千葉算友会授業研究会（昭和学院小学校）</span>
           <span class="arrow"></span>
         </span>
       </li>
@@ -1220,7 +1460,7 @@
           授業見学、教員研修・講演、原稿執筆、教材開発、取材などを承ります。<br>
           ご依頼内容・希望日程・対象・人数をそえて、メールでお問い合わせください。
         </p>
-        <a class="btn" href="mailto:contact@mathmathsan.com" style="text-decoration:none">メールで依頼する</a>
+        <a class="btn" href="mailto:contact@mathmathsan.com" style="text-decoration:none">メールでの問い合わせ</a>
         <p style="color:var(--c-muted);font-size:13px;margin:10px 0 0;font-family:Menlo,Consolas,monospace">
           contact@mathmathsan.com
         </p>
