@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>前田健太 公式サイト | 算数授業・慶應義塾横浜初等部</title>
+<title>前田健太 公式サイト | 算数授業・教材開発</title>
 <meta name="description" content="前田健太（まえだ けんた／通称：まえけん先生）公式サイト。慶應義塾横浜初等部 教諭。算数教育・学級経営を専門に、授業づくり・教材開発・執筆・講演・算数ネタ研究会の運営など、現場発の発信を続けています。">
 <meta name="keywords" content="前田健太,まえだけんた,まえけん先生,算数,算数授業,慶應義塾横浜初等部,横浜初等部,しかける算数授業,算数ネタ研究会,学校図書,算数教科書">
 <meta name="google-site-verification" content="bSzcqHAR_z0QK51pKv2rLSWrqJp-U8NJmWnzd59vKjQ">
@@ -597,7 +597,9 @@
 
 <script>
 (function(){
-  var FEED = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://note.com/mathmathasan/rss');
+  // note RSS をプロキシ経由で取得（キャッシュバスター付き）してブラウザ側でXML解析
+  var RSS = 'https://note.com/mathmathasan/rss';
+  var FEED = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(RSS) + '&_=' + Date.now();
   var listEl = document.getElementById('note-list');
   var GRADIENTS = [
     'linear-gradient(135deg,#0EA5E9 0%,#0369a1 100%)',
@@ -615,16 +617,28 @@
     d.innerHTML = html || '';
     return (d.textContent || d.innerText || '').trim();
   }
-  fetch(FEED).then(function(r){return r.json();}).then(function(data){
-    if (data.status !== 'ok' || !data.items || data.items.length === 0){
-      listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">最新の記事は <a href="https://note.com/mathmathasan" target="_blank" rel="noopener">note</a> でご覧ください。</div>';
-      return;
+  function fallback(){
+    listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">最新の記事は <a href="https://note.com/mathmathasan" target="_blank" rel="noopener">note</a> でご覧ください。</div>';
+  }
+  fetch(FEED).then(function(r){return r.text();}).then(function(xmlText){
+    var doc = new DOMParser().parseFromString(xmlText, 'application/xml');
+    var nodes = doc.querySelectorAll('item');
+    if (!nodes || nodes.length === 0){ fallback(); return; }
+    var items = [];
+    for (var i = 0; i < nodes.length && i < 3; i++){
+      var n = nodes[i];
+      function txt(tag){ var e = n.querySelector(tag); return e ? e.textContent : ''; }
+      items.push({
+        title: txt('title'),
+        link: txt('link'),
+        pubDate: txt('pubDate'),
+        description: txt('description')
+      });
     }
-    var items = data.items.slice(0, 3);
     listEl.innerHTML = items.map(function(it, idx){
       var bg = GRADIENTS[idx % GRADIENTS.length];
       var fg = idx === 1 ? '#7c2d12' : '#ffffff';
-      var excerpt = strip(it.description || it.content || '').slice(0, 80);
+      var excerpt = strip(it.description).slice(0, 80);
       return '<a class="card note-card" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
         '<div class="note-cover" style="background:' + bg + ';color:' + fg + '">' + esc(it.title) + '</div>' +
         '<div class="note-body">' +
@@ -633,9 +647,7 @@
         '</div>' +
       '</a>';
     }).join('');
-  }).catch(function(){
-    listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">最新の記事は <a href="https://note.com/mathmathasan" target="_blank" rel="noopener">note</a> でご覧ください。</div>';
-  });
+  }).catch(fallback);
 })();
 </script>
 
