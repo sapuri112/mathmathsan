@@ -597,9 +597,16 @@
 
 <script>
 (function(){
-  // note RSS をプロキシ経由で取得（キャッシュバスター付き）してブラウザ側でXML解析
+  // note RSS を複数プロキシで順番に試行（タイムアウト付き）。全滅時はnoteリンクを表示。
   var RSS = 'https://note.com/mathmathasan/rss';
-  var FEED = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(RSS) + '&_=' + Date.now();
+  var cb = Date.now();
+  // 各プロキシ: url を作る関数 と レスポンス種別(json/xml)
+  var PROXIES = [
+    { build:function(){ return 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS) + '&_=' + cb; }, kind:'json' },
+    { build:function(){ return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(RSS) + '&_=' + cb; }, kind:'xml' },
+    { build:function(){ return 'https://corsproxy.io/?url=' + encodeURIComponent(RSS); }, kind:'xml' },
+    { build:function(){ return 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(RSS); }, kind:'xml' }
+  ];
   var listEl = document.getElementById('note-list');
   var GRADIENTS = [
     'linear-gradient(135deg,#0EA5E9 0%,#0369a1 100%)',
@@ -618,36 +625,71 @@
     return (d.textContent || d.innerText || '').trim();
   }
   function fallback(){
-    listEl.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">最新の記事は <a href="https://note.com/mathmathasan" target="_blank" rel="noopener">note</a> でご覧ください。</div>';
+    listEl.innerHTML = '<a class="card note-card" href="https://note.com/mathmathasan" target="_blank" rel="noopener" style="grid-column:1/-1">' +
+      '<div class="note-cover" style="background:linear-gradient(135deg,#0EA5E9 0%,#0369a1 100%);color:#fff">note で最新の記録を見る →</div>' +
+      '<div class="note-body"><p class="note-excerpt">日々の授業づくりの記録を note に投稿しています。タップして最新記事をご覧ください。</p></div>' +
+    '</a>';
   }
-  fetch(FEED).then(function(r){return r.text();}).then(function(xmlText){
+  function fetchWithTimeout(url, ms){
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var opts = ctrl ? { signal: ctrl.signal } : {};
+    var timer = setTimeout(function(){ if (ctrl) ctrl.abort(); }, ms);
+    return fetch(url, opts).then(function(r){
+      clearTimeout(timer);
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.text();
+    }, function(e){ clearTimeout(timer); throw e; });
+  }
+  function parseAndRender(xmlText){
     var doc = new DOMParser().parseFromString(xmlText, 'application/xml');
     var nodes = doc.querySelectorAll('item');
-    if (!nodes || nodes.length === 0){ fallback(); return; }
+    if (!nodes || nodes.length === 0) return false;
     var items = [];
     for (var i = 0; i < nodes.length && i < 3; i++){
       var n = nodes[i];
       function txt(tag){ var e = n.querySelector(tag); return e ? e.textContent : ''; }
-      items.push({
-        title: txt('title'),
-        link: txt('link'),
-        pubDate: txt('pubDate'),
-        description: txt('description')
-      });
+      var thumb = '';
+      var thNodes = n.getElementsByTagName('media:thumbnail');
+      if (thNodes && thNodes.length){
+        thumb = (thNodes[0].getAttribute('url') || thNodes[0].textContent || '').trim();
+      }
+      items.push({ title:txt('title'), link:txt('link'), pubDate:txt('pubDate'), description:txt('description'), thumb:thumb });
     }
     listEl.innerHTML = items.map(function(it, idx){
       var bg = GRADIENTS[idx % GRADIENTS.length];
       var fg = idx === 1 ? '#7c2d12' : '#ffffff';
       var excerpt = strip(it.description).slice(0, 80);
+      var cover;
+      if (it.thumb){
+        cover = '<div class="note-cover note-cover-img">' +
+                  '<img src="' + esc(it.thumb) + '" alt="" loading="lazy" ' +
+                  'onerror="this.parentNode.classList.remove(\'note-cover-img\');this.parentNode.style.background=\'' + bg + '\';this.parentNode.style.color=\'' + fg + '\';this.outerHTML=\'' + esc(it.title).replace(/'/g,"\\'") + '\';">' +
+                '</div>';
+      } else {
+        cover = '<div class="note-cover" style="background:' + bg + ';color:' + fg + '">' + esc(it.title) + '</div>';
+      }
       return '<a class="card note-card" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
-        '<div class="note-cover" style="background:' + bg + ';color:' + fg + '">' + esc(it.title) + '</div>' +
+        cover +
         '<div class="note-body">' +
           '<div class="note-date">📝 ' + fmtDate(it.pubDate) + '</div>' +
           '<p class="note-excerpt">' + esc(excerpt) + (excerpt.length >= 80 ? '…' : '') + '</p>' +
         '</div>' +
       '</a>';
     }).join('');
-  }).catch(fallback);
+    return true;
+  }
+  function tryProxy(idx){
+    if (idx >= PROXIES.length){ fallback(); return; }
+    var p = PROXIES[idx];
+    fetchWithTimeout(p.build(), 7000).then(function(body){
+      var xml = body;
+      if (p.kind === 'json'){
+        try { var j = JSON.parse(body); xml = j.contents || ''; } catch(e){ xml = ''; }
+      }
+      if (!xml || !parseAndRender(xml)){ tryProxy(idx + 1); }
+    }).catch(function(){ tryProxy(idx + 1); });
+  }
+  tryProxy(0);
 })();
 </script>
 
@@ -655,6 +697,8 @@
   /* note カード基本スタイル */
   .note-card{color:inherit;text-decoration:none;padding:0!important;overflow:hidden;display:flex;flex-direction:column}
   .note-cover{width:100%;aspect-ratio:16/8;display:flex;align-items:center;justify-content:center;font-weight:800;padding:18px;text-align:center;font-size:17px;line-height:1.4;letter-spacing:.02em}
+  .note-cover-img{padding:0!important;background:#eef4fb;overflow:hidden}
+  .note-cover-img img{width:100%;height:100%;object-fit:cover;display:block}
   .note-body{padding:16px 20px 20px}
   .note-date{font-size:12px;color:var(--c-muted);letter-spacing:.06em;margin-bottom:6px}
   .note-excerpt{margin:0;color:var(--c-sub);font-size:13px;line-height:1.6}
@@ -664,6 +708,7 @@
     #note-list{grid-template-columns:1fr!important;gap:10px!important}
     .note-card{flex-direction:row!important;align-items:stretch}
     .note-cover{aspect-ratio:auto;width:36%;min-width:120px;max-width:160px;padding:10px 8px;font-size:13px;line-height:1.35;flex-shrink:0;display:flex;align-items:center;justify-content:center;text-align:center}
+    .note-cover-img{padding:0!important;width:38%;min-width:110px;max-width:150px}
     .note-body{flex:1;padding:12px 14px;min-width:0}
     .note-date{font-size:11px;margin-bottom:4px;color:var(--c-muted)}
     .note-excerpt{font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
