@@ -600,12 +600,11 @@
   // note RSS を複数プロキシで順番に試行（タイムアウト付き）。全滅時はnoteリンクを表示。
   var RSS = 'https://note.com/mathmathasan/rss';
   var cb = Date.now();
-  // 各プロキシ: url を作る関数 と レスポンス種別(json/xml)
+  // 各プロキシ: url を作る関数 と レスポンス種別(json=allorigins包装 / xml=生RSS / jina=テキスト)
   var PROXIES = [
     { build:function(){ return 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS) + '&_=' + cb; }, kind:'json' },
     { build:function(){ return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(RSS) + '&_=' + cb; }, kind:'xml' },
-    { build:function(){ return 'https://corsproxy.io/?url=' + encodeURIComponent(RSS); }, kind:'xml' },
-    { build:function(){ return 'https://api.codetabs.com/v1/proxy/?quest=' + encodeURIComponent(RSS); }, kind:'xml' }
+    { build:function(){ return 'https://r.jina.ai/' + RSS + '?_=' + cb; }, kind:'jina' }
   ];
   var listEl = document.getElementById('note-list');
   var GRADIENTS = [
@@ -640,10 +639,10 @@
       return r.text();
     }, function(e){ clearTimeout(timer); throw e; });
   }
-  function parseAndRender(xmlText){
+  function parseXml(xmlText){
     var doc = new DOMParser().parseFromString(xmlText, 'application/xml');
     var nodes = doc.querySelectorAll('item');
-    if (!nodes || nodes.length === 0) return false;
+    if (!nodes || nodes.length === 0) return null;
     var items = [];
     for (var i = 0; i < nodes.length && i < 3; i++){
       var n = nodes[i];
@@ -655,6 +654,18 @@
       }
       items.push({ title:txt('title'), link:txt('link'), pubDate:txt('pubDate'), description:txt('description'), thumb:thumb });
     }
+    return items.length ? items : null;
+  }
+  function parseJina(text){
+    // r.jina.ai は Markdown を返す（### [タイトル](URL) … 日付）。サムネ・抜粋なし。
+    var re = /### \[([^\]]+)\]\((https:\/\/note\.com\/mathmathasan\/n\/[^\)]+)\)[\s\S]*?((?:Mon|Tue|Wed|Thu|Fri|Sat|Sun), \d{1,2} [A-Za-z]{3} \d{4}[^\n]*)/g;
+    var items = [], m;
+    while ((m = re.exec(text)) !== null && items.length < 3){
+      items.push({ title:m[1].trim(), link:m[2].trim(), pubDate:m[3].trim(), description:'', thumb:'' });
+    }
+    return items.length ? items : null;
+  }
+  function render(items){
     listEl.innerHTML = items.map(function(it, idx){
       var bg = GRADIENTS[idx % GRADIENTS.length];
       var fg = idx === 1 ? '#7c2d12' : '#ffffff';
@@ -668,25 +679,27 @@
       } else {
         cover = '<div class="note-cover" style="background:' + bg + ';color:' + fg + '">' + esc(it.title) + '</div>';
       }
-      return '<a class="card note-card" href="' + esc(it.link) + '" target="_blank" rel="noopener">' +
-        cover +
-        '<div class="note-body">' +
-          '<div class="note-date">📝 ' + fmtDate(it.pubDate) + '</div>' +
-          '<p class="note-excerpt">' + esc(excerpt) + (excerpt.length >= 80 ? '…' : '') + '</p>' +
-        '</div>' +
-      '</a>';
+      var body = '<div class="note-body"><div class="note-date">📝 ' + fmtDate(it.pubDate) + '</div>';
+      if (excerpt){ body += '<p class="note-excerpt">' + esc(excerpt) + (excerpt.length >= 80 ? '…' : '') + '</p>'; }
+      body += '</div>';
+      return '<a class="card note-card" href="' + esc(it.link) + '" target="_blank" rel="noopener">' + cover + body + '</a>';
     }).join('');
-    return true;
   }
   function tryProxy(idx){
     if (idx >= PROXIES.length){ fallback(); return; }
     var p = PROXIES[idx];
-    fetchWithTimeout(p.build(), 7000).then(function(body){
-      var xml = body;
-      if (p.kind === 'json'){
-        try { var j = JSON.parse(body); xml = j.contents || ''; } catch(e){ xml = ''; }
+    fetchWithTimeout(p.build(), 8000).then(function(body){
+      var items = null;
+      if (p.kind === 'jina'){
+        items = parseJina(body);
+      } else {
+        var xml = body;
+        if (p.kind === 'json'){
+          try { var j = JSON.parse(body); xml = j.contents || ''; } catch(e){ xml = ''; }
+        }
+        items = xml ? parseXml(xml) : null;
       }
-      if (!xml || !parseAndRender(xml)){ tryProxy(idx + 1); }
+      if (items){ render(items); } else { tryProxy(idx + 1); }
     }).catch(function(){ tryProxy(idx + 1); });
   }
   tryProxy(0);
