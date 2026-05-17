@@ -602,6 +602,7 @@
   var cb = Date.now();
   // 各プロキシ: url を作る関数 と レスポンス種別(json=allorigins包装 / xml=生RSS / jina=テキスト)
   var PROXIES = [
+    { build:function(){ return 'https://note-rss.sapuri112.workers.dev/?_=' + cb; }, kind:'xml' },
     { build:function(){ return 'https://cors.eu.org/' + RSS; }, kind:'xml' },
     { build:function(){ return 'https://api.allorigins.win/get?url=' + encodeURIComponent(RSS) + '&_=' + cb; }, kind:'json' },
     { build:function(){ return 'https://api.allorigins.win/raw?url=' + encodeURIComponent(RSS) + '&_=' + cb; }, kind:'xml' },
