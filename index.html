@@ -570,7 +570,7 @@
       <h2>📝 日々の記録</h2>
     </div>
 
-    <div id="note-list" class="cards" style="grid-template-columns:repeat(3,1fr)">
+    <div id="note-list" class="cards">
       <!-- ここに JS で記事カードが描画される -->
       <div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--c-muted);font-size:14px">
         最新の記事を読み込み中…
@@ -622,7 +622,11 @@
   function strip(html){
     var d = document.createElement('div');
     d.innerHTML = html || '';
-    return (d.textContent || d.innerText || '').trim();
+    return (d.textContent || d.innerText || '').replace(/\s+/g, ' ').trim();
+  }
+  function pickImage(html){
+    var m = String(html || '').match(/<img[^>]+src=["']([^"']+)["']/i);
+    return m ? m[1] : '';
   }
   function fallback(){
     listEl.innerHTML = '<a href="https://note.com/mathmathasan" target="_blank" rel="noopener" ' +
@@ -654,13 +658,33 @@
     var items = [];
     for (var i = 0; i < nodes.length && i < 3; i++){
       var n = nodes[i];
-      function txt(tag){ var e = n.querySelector(tag); return e ? e.textContent : ''; }
+      function txt(tag){
+        var ns = n.getElementsByTagName(tag);
+        if (ns && ns.length) return ns[0].textContent || '';
+        if (tag.indexOf(':') === -1){
+          var e = n.querySelector(tag);
+          return e ? e.textContent : '';
+        }
+        return '';
+      }
       var thumb = '';
       var thNodes = n.getElementsByTagName('media:thumbnail');
       if (thNodes && thNodes.length){
         thumb = (thNodes[0].getAttribute('url') || thNodes[0].textContent || '').trim();
       }
-      items.push({ title:txt('title'), link:txt('link'), pubDate:txt('pubDate'), description:txt('description'), thumb:thumb });
+      if (!thumb){
+        var mediaNodes = n.getElementsByTagName('media:content');
+        if (mediaNodes && mediaNodes.length){
+          thumb = (mediaNodes[0].getAttribute('url') || '').trim();
+        }
+      }
+      if (!thumb){
+        var enclosure = n.querySelector('enclosure[type^="image/"]');
+        if (enclosure) thumb = (enclosure.getAttribute('url') || '').trim();
+      }
+      var description = txt('content:encoded') || txt('description');
+      if (!thumb) thumb = pickImage(description);
+      items.push({ title:txt('title'), link:txt('link'), pubDate:txt('pubDate'), description:description, thumb:thumb });
     }
     return items.length ? items : null;
   }
@@ -677,12 +701,12 @@
     listEl.innerHTML = items.map(function(it, idx){
       var bg = GRADIENTS[idx % GRADIENTS.length];
       var fg = idx === 1 ? '#7c2d12' : '#ffffff';
-      var excerpt = strip(it.description).slice(0, 80);
+      var excerpt = strip(it.description).slice(0, 180);
       var cover;
       if (it.thumb){
         cover = '<div class="note-cover note-cover-img">' +
-                  '<img src="' + esc(it.thumb) + '" alt="" loading="lazy" ' +
-                  'onerror="this.parentNode.classList.remove(\'note-cover-img\');this.parentNode.style.background=\'' + bg + '\';this.parentNode.style.color=\'' + fg + '\';this.outerHTML=\'' + esc(it.title).replace(/'/g,"\\'") + '\';">' +
+                  '<img src="' + esc(it.thumb) + '" alt="" loading="lazy" data-title="' + esc(it.title) + '" ' +
+                  'onerror="var p=this.parentNode;p.classList.remove(\'note-cover-img\');p.style.background=\'' + bg + '\';p.style.color=\'' + fg + '\';p.textContent=this.getAttribute(\'data-title\');">' +
                 '</div>';
       } else {
         cover = '<div class="note-cover" style="background:' + bg + ';color:' + fg + '">' + esc(it.title) + '</div>';
@@ -690,7 +714,7 @@
       var body = '<div class="note-body">' +
         '<div class="note-date">📝 ' + fmtDate(it.pubDate) + '</div>' +
         '<div class="note-title">' + esc(it.title) + '</div>';
-      if (excerpt){ body += '<p class="note-excerpt">' + esc(excerpt) + (excerpt.length >= 80 ? '…' : '') + '</p>'; }
+      if (excerpt){ body += '<p class="note-excerpt">' + esc(excerpt) + (excerpt.length >= 180 ? '…' : '') + '</p>'; }
       body += '</div>';
       return '<a class="card note-card" href="' + esc(it.link) + '" target="_blank" rel="noopener">' + cover + body + '</a>';
     }).join('');
@@ -718,25 +742,29 @@
 
 <style>
   /* note カード基本スタイル */
-  .note-card{color:inherit;text-decoration:none;padding:0!important;overflow:hidden;display:flex;flex-direction:column}
-  .note-cover{width:100%;aspect-ratio:16/8;display:flex;align-items:center;justify-content:center;font-weight:800;padding:18px;text-align:center;font-size:17px;line-height:1.4;letter-spacing:.02em}
+  #notes .wrap{max-width:1400px}
+  #note-list{grid-template-columns:repeat(3,minmax(260px,1fr))!important;gap:26px;overflow-x:auto;padding-bottom:4px}
+  .note-card{color:inherit;text-decoration:none!important;padding:0!important;overflow:hidden;display:flex;flex-direction:column;border-radius:16px;border-color:#d6e8f7;box-shadow:0 3px 8px rgba(15,90,160,.08),0 18px 44px rgba(15,90,160,.13)}
+  .note-card:hover{text-decoration:none}
+  .note-cover{width:100%;aspect-ratio:16/8;display:flex;align-items:center;justify-content:center;font-weight:800;padding:22px;text-align:center;font-size:19px;line-height:1.4;letter-spacing:.02em}
   .note-cover-img{padding:0!important;background:#eef4fb;overflow:hidden}
   .note-cover-img img{width:100%;height:100%;object-fit:cover;display:block}
-  .note-body{padding:16px 20px 20px}
-  .note-date{font-size:12px;color:var(--c-muted);letter-spacing:.06em;margin-bottom:6px}
-  .note-title{font-size:16px;font-weight:800;color:var(--c-ink);line-height:1.45;margin:0 0 8px;letter-spacing:.01em}
-  .note-excerpt{margin:0;color:var(--c-sub);font-size:13px;line-height:1.6}
+  .note-body{padding:26px 28px 30px}
+  .note-date{font-size:18px;color:#8a98ad;letter-spacing:.02em;margin-bottom:10px;text-decoration:none}
+  .note-title{font-size:25px;font-weight:800;color:var(--c-ink);line-height:1.45;margin:0 0 12px;letter-spacing:.01em;text-decoration:none}
+  .note-excerpt{margin:0;color:#59677c;font-size:18px;font-weight:600;line-height:1.62;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;text-decoration:none}
 
-  /* スマホ：縦積み 1カラム・横長コンパクトカード */
+  /* NOTEは狭い画面でも横3枚を維持 */
   @media(max-width:860px){
-    #note-list{grid-template-columns:1fr!important;gap:10px!important}
-    .note-card{flex-direction:row!important;align-items:stretch}
-    .note-cover{aspect-ratio:auto;width:36%;min-width:120px;max-width:160px;padding:10px 8px;font-size:13px;line-height:1.35;flex-shrink:0;display:flex;align-items:center;justify-content:center;text-align:center}
-    .note-cover-img{padding:0!important;width:38%;min-width:110px;max-width:150px}
-    .note-body{flex:1;padding:12px 14px;min-width:0}
-    .note-date{font-size:11px;margin-bottom:4px;color:var(--c-muted)}
-    .note-title{font-size:14px;font-weight:800;line-height:1.4;margin:0 0 5px}
-    .note-excerpt{font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+    #notes .wrap{max-width:var(--maxw)}
+    #note-list{grid-template-columns:repeat(3,minmax(260px,1fr))!important;gap:14px!important}
+    .note-card{flex-direction:column!important;align-items:stretch}
+    .note-cover{aspect-ratio:16/8;width:100%;min-width:0;max-width:none;padding:12px;font-size:14px;line-height:1.35;display:flex;align-items:center;justify-content:center;text-align:center}
+    .note-cover-img{padding:0!important;width:100%;min-width:0;max-width:none}
+    .note-body{padding:14px 16px 18px;min-width:0}
+    .note-date{font-size:12px;margin-bottom:5px;color:var(--c-muted)}
+    .note-title{font-size:16px;font-weight:800;line-height:1.4;margin:0 0 7px}
+    .note-excerpt{font-size:12px;line-height:1.5;-webkit-line-clamp:3;margin:0}
   }
 </style>
 
