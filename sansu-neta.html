@@ -7,13 +7,15 @@
 <meta name="description" content="前田健太（まえけん先生）がXで2018年から投稿してきた「算数ネタ」全432本の一覧。キーワード検索・年別・人気順で探せます。授業のスキマ時間や導入にどうぞ。">
 <meta name="keywords" content="算数ネタ,前田健太,まえけん先生,算数,算数授業,教材,クイズ,パズル">
 <link rel="canonical" href="https://www.mathmathsan.com/sansu-neta.html">
-<!-- Open Graph -->
+<!-- Open Graph (Facebook, LINE, etc.) -->
 <meta property="og:site_name" content="前田健太 公式サイト">
 <meta property="og:title" content="算数ネタ一覧（全432本） | 前田健太 公式サイト">
 <meta property="og:description" content="Xで毎日発信してきた「算数ネタ」を全部まとめて検索できる一覧ページ。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.mathmathsan.com/sansu-neta.html">
 <meta property="og:image" content="https://www.mathmathsan.com/og-v5.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="ja_JP">
 <!-- Twitter (X) Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -57,7 +59,9 @@
   }
   a{color:var(--c-accent-ink);text-decoration:none;transition:opacity .2s}
   a:hover{opacity:.7;text-decoration:underline}
+  img{max-width:100%;height:auto;display:block}
 
+  /* ---- Header（トップページと共通） ---- */
   header.site{
     position:sticky;top:0;z-index:50;
     background:rgba(251,250,247,.92);
@@ -67,31 +71,74 @@
   .nav{
     max-width:var(--maxw);margin:0 auto;
     padding:14px 24px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;
   }
   .brand{display:flex;align-items:baseline;gap:10px;flex-shrink:0;white-space:nowrap}
   .brand .name{font-weight:700;font-size:18px;letter-spacing:.02em}
-  .brand .en{color:var(--c-accent-ink);font-size:12px;letter-spacing:.18em;white-space:nowrap}
+  .brand .en{color:var(--c-accent-ink);font-size:12px;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
   nav ul{list-style:none;margin:0;padding:0;display:flex;gap:22px;flex-wrap:wrap}
   nav a{color:var(--c-sub);font-size:14px;white-space:nowrap}
   nav a:hover{color:var(--c-accent-ink)}
   @media(max-width:720px){
     .nav{flex-direction:column;align-items:flex-start;gap:8px;padding:10px 16px}
+    .brand{gap:8px}
+    .brand .name{font-size:16px}
+    .brand .en{font-size:11px;letter-spacing:.08em}
+    nav ul{gap:12px 14px;font-size:13px;width:100%}
+    nav a{font-size:13px}
   }
 
-  .page-head{max-width:var(--maxw);margin:0 auto;padding:56px 24px 8px}
-  .page-head .kicker{color:var(--c-accent-ink);letter-spacing:.22em;font-size:12px;text-transform:uppercase;font-weight:700;margin-bottom:10px}
-  .page-head h1{font-size:clamp(26px,4vw,40px);font-weight:800;margin:0 0 14px;letter-spacing:.02em}
-  .page-head h1 .hl{background:linear-gradient(transparent 65%, var(--c-accent-2) 65%, var(--c-accent-2) 92%, transparent 92%);padding:0 .15em}
-  .page-head .lead{max-width:760px;color:var(--c-sub);font-size:15px;margin:0}
+  /* ---- Hero（トップページと同じ雰囲気） ---- */
+  .hero{max-width:var(--maxw);margin:0 auto;padding:80px 24px 56px}
+  .hero .eyebrow{
+    color:var(--c-accent-ink);
+    letter-spacing:.2em;font-size:12px;text-transform:uppercase;
+    margin-bottom:20px;font-weight:600;
+  }
+  .hero h1{
+    font-size:clamp(28px,4.6vw,52px);
+    font-weight:800;line-height:1.3;
+    margin:0 0 20px;letter-spacing:.02em;color:var(--c-ink);
+  }
+  .hero h1 .hl{
+    background:linear-gradient(transparent 65%, var(--c-accent-2) 65%, var(--c-accent-2) 92%, transparent 92%);
+    padding:0 .15em;
+  }
+  .hero .lead{max-width:720px;font-size:17px;color:var(--c-sub);margin:0 0 28px}
+  .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:999px;
+    font-size:14px;font-weight:700;
+    border:1px solid var(--c-accent);
+    background:var(--c-accent);color:#fff;
+    box-shadow:0 6px 16px rgba(14,165,233,.25);
+    transition:transform .15s, box-shadow .15s, opacity .15s;
+  }
+  .btn:hover{opacity:.95;transform:translateY(-2px);box-shadow:0 10px 22px rgba(14,165,233,.35);text-decoration:none}
+  .btn.ghost{background:transparent;color:var(--c-accent-ink)}
 
+  /* ---- Section（トップページと共通） ---- */
+  section{padding:64px 24px;border-top:1px solid var(--c-line)}
+  .wrap{max-width:var(--maxw);margin:0 auto}
+  .sec-head{margin-bottom:36px}
+  .sec-head .kicker{
+    color:var(--c-accent-ink);letter-spacing:.22em;
+    font-size:12px;text-transform:uppercase;font-weight:700;
+    margin-bottom:10px;
+  }
+  .sec-head h2{
+    font-size:clamp(22px,2.6vw,30px);
+    margin:0;font-weight:700;letter-spacing:.02em;
+  }
+  .sec-head p{color:var(--c-sub);margin:10px 0 0;max-width:720px}
+
+  /* ---- 検索・並べ替え ---- */
   .controls{
-    max-width:var(--maxw);margin:0 auto;padding:20px 24px 8px;
     display:flex;gap:12px;flex-wrap:wrap;align-items:center;
-    position:sticky;top:57px;z-index:40;
-    background:linear-gradient(180deg,var(--c-bg) 80%,transparent);
+    margin-bottom:28px;
   }
-  @media(max-width:720px){.controls{top:88px}}
   .controls input[type=search]{
     flex:1;min-width:220px;
     padding:12px 18px;border-radius:999px;
@@ -109,47 +156,49 @@
   .controls select:focus{border-color:var(--c-accent)}
   .hitcount{color:var(--c-muted);font-size:13px;font-weight:600;white-space:nowrap}
 
-  .neta-wrap{max-width:var(--maxw);margin:0 auto;padding:20px 24px 64px}
-  .neta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  @media(max-width:960px){.neta-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:640px){.neta-grid{grid-template-columns:1fr}}
+  /* ---- ネタカード（トップページの .cards / .card と同じ体裁） ---- */
+  .neta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+  @media(max-width:860px){.neta-grid{grid-template-columns:minmax(0,1fr)}}
   .neta{
+    min-width:0;
     background:var(--c-card);border:1px solid var(--c-line);
-    border-radius:var(--radius);padding:18px 20px;
+    border-radius:var(--radius);padding:24px;
     box-shadow:var(--shadow);
-    display:flex;flex-direction:column;gap:8px;
+    display:flex;flex-direction:column;gap:10px;
     transition:transform .15s, box-shadow .15s;
   }
   .neta:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(15,90,160,.08),0 14px 30px rgba(15,90,160,.14)}
   .neta .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
-  .neta .no{
-    display:inline-block;background:var(--c-accent-soft);color:var(--c-accent-ink);
-    font-size:12px;font-weight:800;letter-spacing:.04em;
-    padding:3px 12px;border-radius:999px;
+  .neta .tag{
+    display:inline-block;background:var(--c-accent-soft);
+    color:var(--c-accent-ink);font-size:11px;
+    padding:3px 10px;border-radius:999px;letter-spacing:.08em;
+    font-weight:600;
   }
-  .neta .no.extra{background:#fef9c3;color:#854d0e}
-  .neta .date{color:var(--c-muted);font-size:12px}
-  .neta h3{margin:0;font-size:15px;line-height:1.55;letter-spacing:.01em}
+  .neta .tag.extra{background:#fef9c3;color:#854d0e}
+  .neta .meta{color:var(--c-muted);font-size:12px;letter-spacing:.08em}
+  .neta h3{margin:0;font-size:17px;line-height:1.55;letter-spacing:.02em;overflow-wrap:anywhere}
   .neta .body{
-    margin:0;color:var(--c-sub);font-size:13px;line-height:1.7;flex:1;
+    margin:0;color:var(--c-sub);font-size:14px;flex:1;
     display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+    overflow-wrap:anywhere;
   }
-  .neta .foot{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:2px}
-  .neta .xlink{
-    display:inline-flex;align-items:center;gap:6px;
-    font-size:12px;font-weight:700;color:var(--c-accent-ink);
-  }
-  .more-wrap{display:flex;justify-content:center;margin-top:32px}
+  .neta .xlink{font-size:13px;font-weight:700;color:var(--c-accent-ink);align-self:flex-end}
+
+  /* もっと見る（トップページの books-toggle と同じ体裁） */
+  .more-wrap{display:flex;justify-content:center;margin:28px 0 0}
   .more-wrap button{
-    padding:13px 34px;border-radius:999px;
+    padding:12px 28px;border-radius:999px;
     background:#fff;color:var(--c-accent-ink);
     border:1.5px solid var(--c-accent);
-    font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;
-    transition:background .15s;
+    font-size:14px;font-weight:700;cursor:pointer;
+    font-family:inherit;
+    transition:background .15s,color .15s;
   }
   .more-wrap button:hover{background:var(--c-accent-soft)}
-  .note{max-width:var(--maxw);margin:0 auto;padding:0 24px 40px;color:var(--c-muted);font-size:12px}
+  .note{color:var(--c-muted);font-size:12px;margin:28px 0 0}
 
+  /* ---- Footer ---- */
   footer{
     padding:40px 24px;border-top:1px solid var(--c-line);
     color:var(--c-muted);font-size:13px;text-align:center;
@@ -163,53 +212,99 @@
   <div class="nav">
     <div class="brand">
       <a href="index.html" style="color:inherit;text-decoration:none"><span class="name">前田 健太</span></a>
-      <span class="en">まえけん先生</span>
+      <span class="en" style="color:var(--c-accent-ink)">まえけん先生</span>
     </div>
     <nav>
       <ul>
-        <li><a href="index.html">トップ</a></li>
+        <li><a href="index.html#notes">📝 日々の記録</a></li>
+        <li><a href="sansu-neta.html" style="color:var(--c-accent-ink);font-weight:700">🔢 算数ネタ一覧</a></li>
+        <li><a href="index.html#about">プロフィール</a></li>
+        <li><a href="index.html#now">いま取り組んでいること</a></li>
+        <li><a href="index.html#upcoming">今後の予定</a></li>
         <li><a href="index.html#books">著書</a></li>
-        <li><a href="https://x.com/mathmathsan" target="_blank" rel="noopener">X @mathmathsan</a></li>
+        <li><a href="index.html#works">最近の活動</a></li>
+        <li><a href="index.html#media">メディア</a></li>
         <li><a href="index.html#contact">お問い合わせ</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<div class="page-head">
-  <div class="kicker">Sansu Neta Archive</div>
-  <h1><span class="hl">算数ネタ</span>一覧</h1>
+<!-- Hero -->
+<section class="hero" style="border-top:none">
+  <p class="eyebrow">Sansu Neta &nbsp;/&nbsp; Archive</p>
+  <h1><span class="hl">算数ネタ</span>一覧<small style="display:block;font-size:14px;color:var(--c-muted);font-weight:500;margin-top:10px;letter-spacing:.14em">2018年からXで毎日発信してきた 全432本</small></h1>
   <p class="lead">
-    2018年12月からXで投稿してきた「算数ネタ」全<strong id="total-count">432</strong>本のアーカイブです。
-    キーワードで検索したり、人気順に並べ替えたりして、授業の導入やスキマ時間にお使いください。
+    授業の導入やスキマ時間、ご家庭での話のタネに。
+    キーワードで検索したり、人気順に並べ替えたりして、お気に入りの1問を見つけてください。
     カードをクリックすると、図・解答つきの元の投稿（X）が開きます。
   </p>
-</div>
-
-<div class="controls">
-  <input type="search" id="q" placeholder="キーワードで探す（例：面積 / 九九 / ゲーム / 入試）" aria-label="キーワード検索">
-  <select id="year" aria-label="年で絞り込み">
-    <option value="">すべての年</option>
-  </select>
-  <select id="sort" aria-label="並び順">
-    <option value="new">新しい順</option>
-    <option value="old">古い順</option>
-    <option value="fav">人気順</option>
-  </select>
-  <span class="hitcount"><span id="hits">432</span>本</span>
-</div>
-
-<div class="neta-wrap">
-  <div class="neta-grid" id="grid"></div>
-  <div class="more-wrap" id="more-wrap" style="display:none">
-    <button id="more-btn" type="button">もっと見る</button>
+  <div class="actions">
+    <a class="btn" href="https://x.com/mathmathsan" target="_blank" rel="noopener">Xで最新のネタを見る</a>
+    <a class="btn ghost" href="index.html">トップページへ</a>
   </div>
-</div>
+</section>
 
-<p class="note">
-  ※番号のない投稿は「番外」と表示しています。「人気順」は X 上の反響をもとにした並び順です。
-  問題の図・解答は各投稿（X）でご覧ください。
-</p>
+<!-- Archive -->
+<section id="archive">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Find Your Favorite</div>
+      <h2>ネタをさがす</h2>
+      <p>キーワード・年・並び順で絞り込めます。</p>
+    </div>
+
+    <div class="controls">
+      <input type="search" id="q" placeholder="キーワードで探す（例：面積 / 九九 / ゲーム / 入試）" aria-label="キーワード検索">
+      <select id="year" aria-label="年で絞り込み">
+        <option value="">すべての年</option>
+      </select>
+      <select id="sort" aria-label="並び順">
+        <option value="new">新しい順</option>
+        <option value="old">古い順</option>
+        <option value="fav">人気順</option>
+      </select>
+      <span class="hitcount"><span id="hits">432</span>本</span>
+    </div>
+
+    <div class="neta-grid" id="grid"></div>
+    <div class="more-wrap" id="more-wrap" style="display:none">
+      <button id="more-btn" type="button">もっと見る</button>
+    </div>
+
+    <p class="note">
+      ※番号のない投稿は「番外」と表示しています。「人気順」は X 上の反響をもとにした並び順です。
+      問題の図・解答は各投稿（X）でご覧ください。
+    </p>
+  </div>
+</section>
+
+<!-- Share（トップページと共通の締め） -->
+<section id="share" style="padding:56px 24px;background:linear-gradient(180deg,var(--c-accent-soft) 0%,var(--c-bg) 100%)">
+  <div class="wrap" style="text-align:center">
+    <div class="kicker" style="color:var(--c-accent-ink);letter-spacing:.22em;font-size:12px;text-transform:uppercase;font-weight:700;margin-bottom:10px">Share</div>
+    <h2 style="margin:0 0 6px;font-size:24px;font-weight:800">このページをシェアする</h2>
+    <p style="margin:0 0 24px;color:var(--c-sub);font-size:14px">先生方やお知り合いに紹介していただけたら嬉しいです。</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a id="share-x" href="#" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#000;color:#fff;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.15);transition:transform .15s">
+        <span style="font-family:Helvetica,Arial,sans-serif;font-weight:900;font-size:16px">𝕏</span>
+        Xでシェア
+      </a>
+      <a id="share-line" href="#" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#06C755;color:#fff;border-radius:999px;font-size:14px;font-weight:700;text-decoration:none;box-shadow:0 4px 12px rgba(6,199,85,.25);transition:transform .15s">
+        <span style="font-family:Helvetica,Arial,sans-serif;font-weight:900;font-size:13px">LINE</span>
+        で送る
+      </a>
+      <button id="share-copy" type="button"
+              style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;background:#fff;color:var(--c-ink);border:1.5px solid var(--c-line);border-radius:999px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(17,24,39,.06);transition:transform .15s;font-family:inherit">
+        <span style="font-size:14px">🔗</span>
+        URLをコピー
+      </button>
+    </div>
+    <p id="copy-toast" style="margin:14px 0 0;font-size:13px;color:var(--c-accent-ink);font-weight:700;opacity:0;transition:opacity .3s">URLをコピーしました ✓</p>
+  </div>
+</section>
 
 <footer>
   <p>&copy; <span id="y"></span> Kenta Maeda. All rights reserved.</p>
@@ -231,7 +326,6 @@
   var shown = PAGE;
   var current = [];
 
-  // 年の選択肢
   var years = [];
   DATA.forEach(function(d){ if (years.indexOf(d.y) < 0) years.push(d.y); });
   years.sort(function(a,b){ return b - a; });
@@ -241,8 +335,6 @@
     yearSel.appendChild(op);
   });
 
-  function fmt(n){ return n == null ? null : n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
-
   function card(d){
     var a = document.createElement('a');
     a.className = 'neta';
@@ -251,20 +343,18 @@
 
     var top = document.createElement('div'); top.className = 'top';
     var no = document.createElement('span');
-    no.className = 'no' + (d.n == null ? ' extra' : '');
+    no.className = 'tag' + (d.n == null ? ' extra' : '');
     no.textContent = d.n == null ? '番外' : 'ネタ' + d.n;
-    var date = document.createElement('span'); date.className = 'date';
-    date.textContent = d.d.replace(/-/g, '/');
+    var date = document.createElement('span'); date.className = 'meta';
+    date.textContent = d.d.replace(/-/g, '.');
     top.appendChild(no); top.appendChild(date);
 
     var h = document.createElement('h3'); h.textContent = d.t;
     var body = document.createElement('p'); body.className = 'body'; body.textContent = d.b;
 
-    var foot = document.createElement('div'); foot.className = 'foot';
     var x = document.createElement('span'); x.className = 'xlink'; x.textContent = 'Xで見る →';
-    foot.appendChild(x);
 
-    a.appendChild(top); a.appendChild(h); a.appendChild(body); a.appendChild(foot);
+    a.appendChild(top); a.appendChild(h); a.appendChild(body); a.appendChild(x);
     return a;
   }
 
@@ -300,8 +390,21 @@
   sortSel.addEventListener('change', apply);
   apply();
 
-  document.getElementById('total-count').textContent = DATA.length;
   document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Share
+  var url = 'https://www.mathmathsan.com/sansu-neta.html';
+  var text = '前田健太（まえけん先生）の算数ネタ一覧 ― 授業や家庭で使える算数の問題432本';
+  var enc = encodeURIComponent;
+  document.getElementById('share-x').href = 'https://twitter.com/intent/tweet?text=' + enc(text) + '&url=' + enc(url);
+  document.getElementById('share-line').href = 'https://social-plugins.line.me/lineit/share?url=' + enc(url) + '&text=' + enc(text);
+  document.getElementById('share-copy').addEventListener('click', function(){
+    navigator.clipboard.writeText(url).then(function(){
+      var t = document.getElementById('copy-toast');
+      t.style.opacity = '1';
+      setTimeout(function(){ t.style.opacity = '0'; }, 2000);
+    });
+  });
 })();
 </script>
 </body>
